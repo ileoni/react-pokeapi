@@ -1,4 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 :root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --bg-yellow-first: #FCF300;
+  --bg-yellow-second: #FCF529;
+  --bg-yellow-third: #FDF752;
+  --bg-yellow-forth: #FDF97A;
+  --bg-yellow-fifth: #FEFBA3;
+  --bg-yellow-sixth: #FEFDCC;
+  
+  --bg-blue-second:  #5EB8E6;
+  --bg-red-third: #ED4051;
+  
+  --primary: #212529;
+  --secondary: #495057;
+  --tertiary: #e9ecef;
+
+  --roboto: 'Roboto', sans-serif;
+  --cairo: 'Cairo', sans-serif;
+
+  --font-size-50: 50px;
+  --font-size-40: 40px;
+  --font-size-30: 30px;
+  --font-size-25: 25px;
+  --font-size-20: 20px;
+  --font-size-16: 16px;
+
+  background-color: var(--bg-yellow-first);
+  color: var(--primary);
 }
+
+.dash { border: 1px dashed; }
+
+* {
+  box-sizing: border-box;
+  font-family: var(--roboto);
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {font-size: 50px;}
+h2 {font-size: 40px;}
+h2 {font-size: 30px;}
+h2 {font-size: 25px;}
+h2 {font-size: 20px;}
+h2 {font-size: 16px;}
+
+.container {
+  margin: 0 120px;
+}
+
+.font-50 {font-size: var(--font-size-50);}
+.font-40 {font-size: var(--font-size-40);}
+.font-30 {font-size: var(--font-size-30);}
+.font-25 {font-size: var(--font-size-25);}
+.font-20 {font-size: var(--font-size-20);}
+.font-16 {font-size: var(--font-size-16);}
