@@ -70,3 +70,22 @@ h2 {font-size: 16px;}
 .font-25 {font-size: var(--font-size-25);}
 .font-20 {font-size: var(--font-size-20);}
 .font-16 {font-size: var(--font-size-16);}
+
+.bg-yellow-first {
+  background-color: var(--bg-yellow-first);
+}
+.bg-yellow-second {
+  background-color: var(--bg-yellow-second);
+}
+.bg-yellow-third {
+  background-color: var(--bg-yellow-third);
+}
+.bg-yellow-forth {
+  background-color: var(--bg-yellow-forth);
+}
+.bg-yellow-fifth {
+  background-color: var(--bg-yellow-fifth);
+}
+.bg-yellow-sixth {
+  background-color: var(--bg-yellow-sixth);
+}

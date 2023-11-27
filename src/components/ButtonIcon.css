@@ -1,15 +1,13 @@
 .wrapper__button {
+    padding: 0 16px;
     height: 40px;
-    width: 140px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     background: var(--bg-red-third);
 }
-.button__icon {
-    padding-left: 16px;
-}
 .button__text {
     padding-left: 8px;
     color: var(--bg-yellow-first);
+    font-weight: 600;
 }
