@@ -1,0 +1,53 @@
+.section-first {
+    height: 400px;
+}
+
+.section-second {
+    height: 400px;
+}
+
+.spikes {
+    width: 100%;
+    position: relative;
+}
+
+.spikes::before,
+.spikes::after {
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    content: "";
+    background: var(--bg-yellow-fifth);
+    -webkit-mask-image: url(../../public/spike.svg);
+    -webkit-mask-size: contain;
+}
+
+.spikes::before {
+    top: -29px;
+}
+
+.spikes::after {
+    bottom: -29px;
+    rotate: 180deg;
+    transform: scaleX(-1);
+    z-index: 1000;
+}
+
+.section-third {
+    height: 400px;
+    position: relative;
+    background: url('../../public/background.png') no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+}
+
+.section-third::before {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(
+        150deg, var(--bg-yellow-first) 30%, #0000 100%
+    );
+}
