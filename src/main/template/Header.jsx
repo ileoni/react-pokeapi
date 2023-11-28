@@ -1,14 +1,14 @@
 import './Header.css';
 
-import Logo from '../../../public/Logo.svg';
-import Search from '../../../public/Search.svg';
+import Logo from '../../assets/logo.svg';
+import Search from '../../assets/Search.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 
 function Header ()
 {
     return (
         <header className="wrapper__header">
-            <div className="container header">
+            <div className="header m-[120px]">
                 <div className="header__logo">
                     <img src={Logo} alt="logo" />
                 </div>

@@ -4,7 +4,6 @@
     border-radius: 50px;
     display: flex;
     align-items: center;
-    background: var(--bg-red-third);
 }
 .button__text {
     padding-left: 8px;

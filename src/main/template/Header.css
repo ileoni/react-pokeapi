@@ -2,6 +2,7 @@
     height: 80px;
     display: flex;
     place-items: center;
+    background-color: var(--bg-yellow-first);
     box-shadow: 0 8px 16px #00000040;
 }
 

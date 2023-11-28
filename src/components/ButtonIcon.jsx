@@ -3,7 +3,7 @@ import "./ButtonIcon.css";
 function ButtonIcon ({ icon, alt, text })
 {
     return (
-        <button className="wrapper__button">
+        <button className="wrapper__button bg-red">
             <div className="button__icon">
                 <img src={icon} alt={alt} />
             </div>
