@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg-yellow-first: #FCF300;
   --bg-yellow-second: #FCF529;
   --bg-yellow-third: #FDF752;
-  --bg-yellow-forth: #FDF97A;
+  --bg-yellow-fourth: #FDF97A;
   --bg-yellow-fifth: #FEFBA3;
   --bg-yellow-sixth: #FEFDCC;
   
-  --bg-blue-second:  #5EB8E6;
-  --bg-red-third: #ED4051;
+  --blue-second:  #5EB8E6;
+  --red-third: #ED4051;
   
   --primary: #212529;
   --secondary: #495057;
@@ -24,6 +28,7 @@
   --font-size-25: 25px;
   --font-size-20: 20px;
   --font-size-16: 16px;
+  --font-size-12: 12px;
 
   background-color: var(--bg-yellow-first);
   color: var(--primary);
@@ -38,6 +43,15 @@
 
 body {
   margin: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--bg-yellow-sixth);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--red-third);
 }
 
 button {
@@ -55,14 +69,10 @@ ul {
 
 h1 {font-size: 50px;}
 h2 {font-size: 40px;}
-h2 {font-size: 30px;}
-h2 {font-size: 25px;}
-h2 {font-size: 20px;}
-h2 {font-size: 16px;}
-
-.container {
-  margin: 0 120px;
-}
+h3 {font-size: 30px;}
+h4 {font-size: 25px;}
+h5 {font-size: 20px;}
+h6 {font-size: 16px;}
 
 .font-50 {font-size: var(--font-size-50);}
 .font-40 {font-size: var(--font-size-40);}
@@ -70,6 +80,8 @@ h2 {font-size: 16px;}
 .font-25 {font-size: var(--font-size-25);}
 .font-20 {font-size: var(--font-size-20);}
 .font-16 {font-size: var(--font-size-16);}
+.font-12 {font-size: var(--font-size-12);}
+
 
 .bg-yellow-first {
   background-color: var(--bg-yellow-first);
@@ -80,12 +92,28 @@ h2 {font-size: 16px;}
 .bg-yellow-third {
   background-color: var(--bg-yellow-third);
 }
-.bg-yellow-forth {
-  background-color: var(--bg-yellow-forth);
+.bg-yellow-fourth {
+  background-color: var(--bg-yellow-fourth);
 }
 .bg-yellow-fifth {
   background-color: var(--bg-yellow-fifth);
 }
 .bg-yellow-sixth {
   background-color: var(--bg-yellow-sixth);
+}
+
+.bg-red {
+  background-color: var(--red-third);
+}
+
+.color-red {
+  color: var(--red-third);
+}
+
+.font-roboto {
+  font-family: var(--roboto);
+}
+
+.font-cairo {
+  font-family: var(--cairo);
 }
