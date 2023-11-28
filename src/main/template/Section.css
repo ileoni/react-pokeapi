@@ -1,0 +1,15 @@
+.wrapper__section {
+    display: grid;
+}
+
+.wrapper__section {
+    grid-template-columns: 1fr;
+}
+
+.wrapper__section--columns {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.s-image {
+    justify-self: center;
+}
