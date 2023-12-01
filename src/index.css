@@ -98,8 +98,27 @@ h6 {font-size: 16px;}
 .bg-yellow-fifth {
   background-color: var(--bg-yellow-fifth);
 }
-.bg-yellow-sixth {
+.color-yellow-sixth {
   background-color: var(--bg-yellow-sixth);
+}
+
+.color-yellow-first {
+  color: var(--bg-yellow-first);
+}
+.color-yellow-second {
+  color: var(--bg-yellow-second);
+}
+.color-yellow-third {
+  color: var(--bg-yellow-third);
+}
+.color-yellow-fourth {
+  color: var(--bg-yellow-fourth);
+}
+.color-yellow-fifth {
+  color: var(--bg-yellow-fifth);
+}
+.color-yellow-sixth {
+  color: var(--bg-yellow-sixth);
 }
 
 .bg-red {
@@ -116,4 +135,27 @@ h6 {font-size: 16px;}
 
 .font-cairo {
   font-family: var(--cairo);
+}
+
+.image--masked {
+  background: var(--pokemon-image);
+  background-size: contain;
+}
+
+.image--masked > img {
+  width: 100%;
+  object-fit: cover;
+  filter: contrast(1.2) brightness(1.1) drop-shadow(8px 8px 8px #00000040);
+}
+
+.image--masked::after {
+  width: 100%;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #ffffffd9 4%, transparent 50%);
+  background-size: cover;
+  -webkit-mask-image: var(--pokemon-image);
+  -webkit-mask-size: cover;
+  z-index: 1;
 }
