@@ -1,0 +1,53 @@
+.wrapper__card {
+    height: 220px;
+    padding: 12px;
+    position: relative;
+}
+
+.wrapper__card * {
+    position: relative;
+    z-index: 1;
+}
+
+.wrapper__card::before {
+    content: "";
+    position: absolute;
+    inset: 30% 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #FFF0, var(--bg-yellow-sixth));
+    box-shadow: 0px 16px 16px -8px #00000040;
+    border-radius: 8px;
+}
+
+.card__text {
+    height: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, auto) 12px;
+    place-items: baseline center;
+}
+
+.card__name {
+    justify-self: start;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.card__number {
+    justify-self: end;
+    padding-right: 8px;
+}
+
+.card__pokebola {
+    height: 12px;
+    width: 12px;
+    justify-self: end;
+    position: relative;
+}
+
+.card__pokebola::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background-image: url(../assets/pokebola.svg);
+    background-size: cover;
+}
