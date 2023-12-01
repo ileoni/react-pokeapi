@@ -1,0 +1,9 @@
+.s-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.s-image {
+    position: relative;
+}

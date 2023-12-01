@@ -1,0 +1,44 @@
+section {
+    position: relative;
+}
+
+.s-whos-that-pokemon__background {
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/whos-that-pokemon-1.png);
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1;
+}
+
+.s-whos-that-pokemon__background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg, var(--bg-yellow-first) 30%, transparent 100%
+    );
+}
+
+.s-whos-that-pokemon__image {
+    width: 300px;
+    position: relative;
+    filter: brightness(0.01);
+}
+
+.s-whos-that-pokemon__image--show {
+    filter: brightness(1);
+    transition: filter 600ms;
+}
+
+.shaking--show {
+    animation: shaking 300ms alternate forwards;
+}
+
+@keyframes shaking {
+    0% { transform: translate(0px); rotate: 0deg;}
+    25% { transform: translate(4px, 8px); rotate: 4deg;}
+    50% { transform: translate(-4px, 8px); rotate: -4deg;}
+    75% { transform: translate(4px, 8px); rotate: 4deg;}
+    100% { transform: translate(0px); rotate: 0deg;}
+}

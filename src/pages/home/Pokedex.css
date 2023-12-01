@@ -1,0 +1,29 @@
+.spikes {
+    position: relative;
+}
+
+.spikes::before,
+.spikes::after {
+    height: 30px;
+    width: 100%;
+    content: "";
+    position: absolute;
+    background-color: var(--bg-yellow-fifth);
+    -webkit-mask-image: url(../../assets/spike.svg);
+    z-index: 1;
+}
+
+.spikes::before {
+    top: -29.5px;
+}
+.spikes::after {
+    bottom: -29.5px;
+    rotate: 180deg;
+}
+
+.section__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
+    gap: 64px;
+}
