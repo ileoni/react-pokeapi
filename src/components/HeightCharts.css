@@ -1,0 +1,56 @@
+.height-charts {
+    display: grid;
+    grid-template-columns: 25% 30% 45%;
+    grid-auto-flow: column;
+    place-items: end;
+}
+
+.compare_pokemon {
+    margin-right: 64px;
+    display: flex;
+}
+
+.hc__pokemon {
+    position: relative;
+}
+
+.height__pokemon {
+    filter: brightness(0.1) opacity(0.4);
+}
+
+.height__pokemon--active {
+    filter: brightness(0) opacity(0.8);
+}
+
+.h-weight__text {
+    position: absolute;
+    inset: auto 0;
+    bottom: -30px;
+    display: grid;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.height__pokemon--active + .h-weight__text {
+    font-weight: 900;
+}
+
+.hc__height {
+    height: inherit;
+    position: relative;
+    filter: brightness(0);
+}
+
+.height__image {
+    height: 100%;
+    width: 40px;
+    object-fit: cover;
+    filter: brightness(0);
+}
+
+.h-height__text {
+    position: absolute;
+    inset: auto;
+    bottom: 0;
+    right: -48px;
+}
