@@ -1,0 +1,38 @@
+.carousel {
+    height: 200px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.carousel__item {
+    height: 100%;
+    width: 200px;
+    box-sizing: content-box;
+    position: absolute;
+    transition: all 800ms;
+}
+
+.carousel__item--activated {
+    z-index: 2;
+    transition: all 600ms;
+}
+
+.carousel__item:not(.carousel__item--activated) {
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel__image {
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel__item--activated > *{
+    transition: all 600ms;
+}
+
+.carousel__item:not(.carousel__item--activated) > * {
+    transform: scale(0.6);
+    transition: all 600ms;
+}
