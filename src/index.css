@@ -1,8 +1,10 @@
+@import "./assets/css/pokemon-color.css";
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
   --bg-yellow-first: #FCF300;
@@ -42,6 +44,7 @@
 }
 
 body {
+  scroll-behavior: smooth;
   margin: 0;
 }
 
@@ -158,4 +161,17 @@ h6 {font-size: 16px;}
   -webkit-mask-image: var(--pokemon-image);
   -webkit-mask-size: cover;
   z-index: 1;
+}
+
+.pokeball {
+  position: relative;
+  display: block;
+}
+.pokeball::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--red-third);
+  mask-image: url(./assets/pokebola.svg);
+  mask-size: cover;
 }
