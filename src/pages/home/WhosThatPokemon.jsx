@@ -39,7 +39,7 @@ function WhosThatPokemon({pokemons})
 
     return (
         <Section>
-            <div className="s-whos-that-pokemon__background"></div>
+            <div id="whos-that-pokemon" className="s-whos-that-pokemon__background"></div>
             <div className="s-text">
                 <h4 className="font-cairo">Quem é esse</h4>
                 <h1 className="font-cairo font-bold color-red">Pokemon?</h1>

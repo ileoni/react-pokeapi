@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 import Logo from '../../assets/logo.svg';
@@ -10,17 +11,19 @@ function Header ()
         <header className="wrapper__header">
             <div className="header m-[120px]">
                 <div className="header__logo">
-                    <img src={Logo} alt="logo" />
+                    <a href="/">
+                        <img src={Logo} alt="logo" />
+                    </a>
                 </div>
                 <nav className="header__navigate">
                     <ul className="navigate__list">
                         <li className='navigate__item'>
-                            <a className='navigate__link font-16' href="">
+                            <a className='navigate__link font-16' href="/#pokedex">
                                 Pokédex
                             </a>
                         </li>
                         <li className='navigate__item'>
-                            <a className='navigate__link font-16' href="">
+                            <a className='navigate__link font-16' href="/#whos-that-pokemon">
                                 Qual é esse pokemon?
                             </a>
                         </li>

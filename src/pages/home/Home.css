@@ -2,12 +2,6 @@
     position: relative;
 }
 
-/* .particles {
-    position: absolute;
-    inset: -20px 0;
-    z-index: -1;
-} */
-
 .section__content {
     height: 100%;
     display: grid;
@@ -21,12 +15,4 @@
     grid-template-columns: repeat(auto-fit, 200px);
     justify-content: center;
     gap: 64px;
-}
-
-.spikes {
-
-}
-
-.section__third {
-
 }
