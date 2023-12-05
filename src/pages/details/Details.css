@@ -1,0 +1,27 @@
+.details-spikes {
+    position: relative;
+}
+.details-spikes::before,
+.details-spikes::after
+{
+    --top: 60%;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--bg-yellow-fifth);
+    z-index: -1;
+}
+.details-spikes::before {
+    top: var(--top);
+}
+.details-spikes::after {
+    top: calc(var(--top) - 30px);
+    mask-image: url(../../assets/spike.svg);
+}
+
+.d-type {
+    width: 120px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 30px;
+}
