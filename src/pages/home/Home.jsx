@@ -11,20 +11,23 @@ function Home()
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(() => {
-        getByName('pikachu')
-            .then(setPokemon);
+        console.log('aqui')
+        // getByName('pikachu')
+        //     .then(setPokemon);
 
-        getAll(12)
-            .then(setPokemons);
+        // getAll(12)
+        //     .then(setPokemons);
     }, []);
 
     return (
         <>
-            <Introduction pokemon={pikachu}/>
-            <Pokedex list={pokemons}/>
+            {/* <Introduction pokemon={pikachu}/>
+            {
+                !!pokemons.length && (<Pokedex list={pokemons}/>)
+            }
             {
                 !!pokemons.length && (<WhosThatPokemon pokemons={pokemons}/>)
-            }
+            } */}
         </>
     );
 }

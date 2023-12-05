@@ -9,7 +9,3 @@
 .wrapper__section--columns {
     grid-template-columns: repeat(2, 1fr);
 }
-
-.s-image {
-    justify-self: center;
-}

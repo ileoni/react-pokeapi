@@ -1,18 +1,15 @@
 import "./Card.css";
+import ImageMask from './ImageMask';
 
 function Card({pokemon})
 {
     const { id, name, sprite } = pokemon;
-
-    const pokemonImageInline = {
-        "--pokemon-image": `url('${sprite}')`
-    };
-
+    
     return (
-        <div className="wrapper__card" style={pokemonImageInline}>
-            <div className="image--masked">
+        <div className="wrapper__card">
+            <ImageMask image={sprite}>
                 <img src={sprite} alt={name} className="card__image" />
-            </div>
+            </ImageMask>
             <div className="card__text">
                 <span className="card__name font-cairo">
                     {name}

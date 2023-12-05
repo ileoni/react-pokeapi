@@ -7,22 +7,20 @@ import Card from "../../components/Card";
 function Pokedex({list})
 {
     return (
-        <div className="spikes">
-            <Section background="bg-yellow-fifth" columns={false}>
-                <div id="pokedex" className="section__grid">
-                    {
-                        list?.map((pokemon, index) => (
-                            <Link 
-                                key={index}
-                                to={`pokemon/${pokemon.name}`} 
-                            >
-                                <Card pokemon={pokemon}/>
-                            </Link>               
-                        ))
-                    }
-                </div>
-            </Section>
-        </div>
+        <Section section="bg-yellow-fifth" mask="spikes" cols={false}>
+            <div id="pokedex" className="section__grid">
+                {
+                    list?.map((pokemon, index) => (
+                        <Link 
+                            key={index}
+                            to={`pokemon/${pokemon.name}`} 
+                        >
+                            <Card pokemon={pokemon}/>
+                        </Link>               
+                    ))
+                }
+            </div>
+        </Section>
     );
 }
 

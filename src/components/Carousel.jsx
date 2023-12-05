@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './Carousel.css';
+import ImageMask from './ImageMask';
 
 function Carousel({ activated, evolutions })
 {
@@ -57,13 +58,10 @@ function Carousel({ activated, evolutions })
                     <div 
                         key={index} 
                         className={`carousel__item ${activated === name ? 'carousel__item--activated': ''}`}
-                        style={{ '--pokemon-image': `url('${sprite}')` }}>
-                        <div className="image--masked">
-                            <img 
-                                src={sprite} 
-                                alt={`imagem do pokemon ${name}`} 
-                                className="carousel__image" />
-                        </div>
+                    >
+                        <ImageMask image={sprite}>
+                            <img className="carousel__image" src={sprite} alt={`imagem do pokemon ${name}`} />
+                        </ImageMask>
                     </div>
                 ))
             }

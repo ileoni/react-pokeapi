@@ -52,19 +52,21 @@ function WhosThatPokemon({pokemons})
                         }}
                     >Resposta errada!</small>
                 </div>
-            </div>   
-            <div 
-                ref={spriteRef}
-                className="s-image s-whos-that-pokemon__image" 
-                style={{
-                    "--pokemon-image": `url(${pokemon?.sprite})`
-                }}
-            >
-                <div className="image--masked"> 
-                    <img 
-                        src={pokemon?.sprite}
-                        alt="Mostra a imagem de um pokemon aleatório"
-                    />
+            </div>
+            <div className="s-image">
+                <div 
+                    ref={spriteRef}
+                    className="s-whos-that-pokemon__image" 
+                    style={{
+                        "--pokemon-image": `url(${pokemon?.sprite})`
+                    }}
+                >
+                    <div className="image--masked"> 
+                        <img 
+                            src={pokemon?.sprite}
+                            alt="Mostra a imagem de um pokemon aleatório"
+                        />
+                    </div>
                 </div>
             </div>
         </Section>
