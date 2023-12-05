@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Pokedex.css";
 
 import Section from "../../main/template/Section";
@@ -8,10 +9,15 @@ function Pokedex({list})
     return (
         <div className="spikes">
             <Section background="bg-yellow-fifth" columns={false}>
-                <div className="section__grid">
+                <div id="pokedex" className="section__grid">
                     {
                         list?.map((pokemon, index) => (
-                            <Card pokemon={pokemon} key={index} />
+                            <Link 
+                                key={index}
+                                to={`pokemon/${pokemon.name}`} 
+                            >
+                                <Card pokemon={pokemon}/>
+                            </Link>               
                         ))
                     }
                 </div>
