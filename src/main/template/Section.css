@@ -9,3 +9,40 @@
 .wrapper__section--columns {
     grid-template-columns: repeat(2, 1fr);
 }
+
+.spikes {
+    position: relative;
+}
+
+.spikes::before,
+.spikes--bottom::after
+{
+    height: 30px;
+    width: 100%;
+    content: "";
+    position: absolute;
+    background: inherit;
+    -webkit-mask-image: url(../../assets/spike.svg);
+    z-index: 1;
+}
+
+.spikes::before {
+    top: -29px;
+}
+
+.spikes--bottom::after {
+    bottom: -29px;
+    scale: -1;
+}
+
+.background__layer {
+    position: relative;
+    background: url(../../assets/whos-that-pokemon-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: bottom;
+}
+
+.background__layer > * {
+    z-index: 1;
+}

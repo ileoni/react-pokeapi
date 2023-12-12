@@ -1,31 +1,43 @@
 import './Section.css';
 
-// function Section({ background, columns = true, children })
-// {
-//     return (
-//         <section className={`${background}`}>
-//             <div className={`wrapper__section ${columns ? "wrapper__section--columns": ""}  mx-[120px] py-8`}>
-//                 {children}
-//             </div>
-//         </section>
-//     );
-// }
-
-function Section({section, mask, cols = true, children})
+export function Grid({cols = false, children})
 {
     return (
-        <section className={section}>
-            <div className={mask}>
-                <div className={`mx-[120px] py-8`}>
-                    {
-                        cols ? (
-                            <div className="grid grid-cols-1 md:grid-cols-2">{children}</div>
-                        ) : (   
-                            <div className="grid grid-cols-1">{children}</div>
-                        )
-                    }
-                </div>
-            </div>
+        <div className={`mx-[32px] md:mx-[120px] pt-8 pb-16`}>
+            {
+                cols ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2">{children}</div>
+                ) : (   
+                    <div className="grid grid-cols-1">{children}</div>
+                )
+            }
+        </div>
+    );
+}
+
+export function Spikes({className, children})
+{
+    return (
+        <div className={`spikes ${className}`}>
+            {children}
+        </div>
+    );
+}
+
+export function Background({className, children})
+{
+    return (
+        <div className={`background__layer ${className}`}>
+            {children}
+        </div>
+    );
+}
+
+function Section({children})
+{
+    return (
+        <section>
+            {children}
         </section>
     );
 }
