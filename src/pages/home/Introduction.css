@@ -1,9 +1,18 @@
-.s-text {
+.h-introduction__text {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* .s-image {
-    position: relative;
-} */
+.h-introduction__image {
+    display: grid;
+    grid-auto-columns: 400px;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .h-introduction__image {
+        grid-auto-columns: 220px;
+    }
+}

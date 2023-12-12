@@ -35,3 +35,19 @@
     font-weight: 300;
     color: var(--primary);
 }
+
+@media (max-width: 600px) {
+    .header {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .header__logo {
+        justify-self: start;
+    }
+
+    .header__navigate {
+        display: none;
+    }
+}

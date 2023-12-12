@@ -34,6 +34,10 @@
 
   background-color: var(--bg-yellow-first);
   color: var(--primary);
+
+  --home-gradient: linear-gradient(60deg, #FCF300 30%, transparent 100%);
+  --details-gradient: linear-gradient(180deg, #FDF752AA 10%, transparent 100%);
+
 }
 
 .dash { border: 1px dashed; }
@@ -84,7 +88,6 @@ h6 {font-size: 16px;}
 .font-20 {font-size: var(--font-size-20);}
 .font-16 {font-size: var(--font-size-16);}
 .font-12 {font-size: var(--font-size-12);}
-
 
 .bg-yellow-first {
   background-color: var(--bg-yellow-first);
@@ -144,6 +147,7 @@ h6 {font-size: 16px;}
   position: relative;
   display: block;
 }
+
 .pokeball::before {
   content: "";
   position: absolute;
@@ -151,4 +155,47 @@ h6 {font-size: 16px;}
   background: var(--red-third);
   mask-image: url(./assets/pokebola.svg);
   mask-size: cover;
+}
+
+.home--gradient,
+.details--gradient {
+  position: relative;
+}
+
+.home--gradient::before,
+.details--gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.home--gradient::before {
+  background: var(--home-gradient);
+}
+
+.details--gradient::before {
+  background: var(--details-gradient);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --font-size-35: 35px;
+    --font-size-30: 30px;
+    --font-size-25: 25px;
+    --font-size-20: 20px;
+    --font-size-16: 16px;
+    --font-size-12: 12px;
+    --font-size-12: 12px;
+  }
+
+  * {
+    font-size: var(--font-size-12);
+  }
+
+  h1, h1 > * {font-size: var(--font-size-35)}
+  h2, h2 > * {font-size: var(--font-size-30)}
+  h3, h3 > * {font-size: var(--font-size-25)}
+  h4, h4 > * {font-size: var(--font-size-20)}
+  h5, h5 > * {font-size: var(--font-size-16)}
+  h6, h6 > * {font-size: var(--font-size-12)}
 }

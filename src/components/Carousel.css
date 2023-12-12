@@ -36,3 +36,12 @@
     transform: scale(0.6);
     transition: all 600ms;
 }
+
+@media (max-width: 600px) {
+    .carousel {
+        height: 100px;
+    }
+    .carousel__item {
+        width: clamp(100px, 30%, 100vw);
+    }
+}

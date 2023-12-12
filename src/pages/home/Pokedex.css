@@ -1,29 +1,17 @@
-.spikes {
-    position: relative;
-}
-
-.spikes::before,
-.spikes::after {
-    height: 30px;
-    width: 100%;
-    content: "";
-    position: absolute;
-    background-color: var(--bg-yellow-fifth);
-    -webkit-mask-image: url(../../assets/spike.svg);
-    z-index: 1;
-}
-
-.spikes::before {
-    top: -29.5px;
-}
-.spikes::after {
-    bottom: -29.5px;
-    rotate: 180deg;
-}
-
-.section__grid {
+.pokedex {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
-    justify-content: center;
-    gap: 64px;
+    grid-template-columns: repeat(auto-fit, 220px);
+    grid-auto-rows: 220px;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+@media (max-width: 600px) {
+    .pokedex {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 160px);
+        grid-auto-rows: 160px;
+        justify-content: center;
+        gap: 16px;
+    }
 }
