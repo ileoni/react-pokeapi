@@ -37,6 +37,7 @@
 
   --home-gradient: linear-gradient(60deg, #FCF300 30%, transparent 100%);
   --details-gradient: linear-gradient(180deg, #FDF752AA 10%, transparent 100%);
+  --loading-gradient: linear-gradient(60deg, white 10%, transparent 100%);
 
 }
 
