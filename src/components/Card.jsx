@@ -3,13 +3,15 @@ import ImageMask from './ImageMask';
 
 function Card({pokemon})
 {
-    const { id, name, sprite } = pokemon;
+    const { id, name, image } = pokemon;
     
     return (
         <div className="wrapper__card">
-            <ImageMask image={sprite}>
-                <img src={sprite} alt={name} className="card__image" />
-            </ImageMask>
+            <div className="card__image">
+                <ImageMask image={image}>
+                    <img src={image} alt={name} />
+                </ImageMask>
+            </div>
             <div className="card__text">
                 <span className="card__name font-cairo">
                     {name}

@@ -1,20 +1,24 @@
 export const whosThatPokemon = {
-    data: {},
+    data: {
+        pokemon: null,
+        input: null,
+        image: null
+    },
     delay: 800,
     toLower: (value) => String(value).toLowerCase(),
     clear () {
-        const {inputRef} = this.data;
-        inputRef.current.value = "";
+        const {input} = this.data;
+        input.current.value = "";
     },
     fadein () {
-        const {spriteRef} = this.data;
-        spriteRef.current.style.opacity = "1";
-        spriteRef.current.style.transition = "opacity 200ms";
+        const {image} = this.data;
+        image.current.style.opacity = "1";
+        image.current.style.transition = "opacity 200ms";
     },
     fadeout () {
-        const {spriteRef} = this.data;
-        spriteRef.current.style.opacity = "0";
-        spriteRef.current.style.transition = "opacity 400ms";
+        const {image} = this.data;
+        image.current.style.opacity = "0";
+        image.current.style.transition = "opacity 400ms";
     },
     isCorrect(callback) {
         let counter = 0;
@@ -40,8 +44,8 @@ export const whosThatPokemon = {
         let timer = setInterval(intervalHandler, this.delay);
     },
     isIncorrect() {
-        const {inputRef} = this.data;
-        const parent = inputRef.current.closest('#shaking');
+        const {input} = this.data;
+        const parent = input.current.closest('#shaking');
         const message = parent.querySelector('#message');
         parent.classList.add('shaking--show');
         message.style.visibility = 'visible';
@@ -52,18 +56,18 @@ export const whosThatPokemon = {
         }, this.delay);
     },
     start (callback) {
-        const {pokemon, inputRef, spriteRef} = this.data;
+        const {pokemon, input, image} = this.data;
         const {name} = pokemon;
-        const {value} = inputRef.current;
+        const {value} = input.current;
 
         if(value === "") return false;
 
         if(name === this.toLower(value)) {
-            spriteRef.current.classList.add('s-whos-that-pokemon__image--show');
+            image.current.classList.add('s-whos-that-pokemon__image--show');
             this.clear();
             
             this.isCorrect(() => {
-                spriteRef.current.classList.remove('s-whos-that-pokemon__image--show');
+                image.current.classList.remove('s-whos-that-pokemon__image--show');
                 callback();
             })
         } else {

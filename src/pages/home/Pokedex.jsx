@@ -1,25 +1,33 @@
-import { Link } from "react-router-dom";
 import "./Pokedex.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import Section from "../../main/template/Section";
+import Section, { Grid, Spikes } from "../../main/template/Section";
 import Card from "../../components/Card";
 
-function Pokedex({list})
+function Pokedex({pokemons})
 {
+    const [list, setList] = useState([]);
+    
+    useEffect(() => {
+        if(!![...pokemons].length) setList(pokemons);
+    }, [pokemons])
+
     return (
-        <Section section="bg-yellow-fifth" mask="spikes" cols={false}>
-            <div id="pokedex" className="section__grid">
-                {
-                    list?.map((pokemon, index) => (
-                        <Link 
-                            key={index}
-                            to={`pokemon/${pokemon.name}`} 
-                        >
-                            <Card pokemon={pokemon}/>
-                        </Link>               
-                    ))
-                }
-            </div>
+        <Section>
+            <Spikes className="bg-yellow-fifth spikes--bottom">
+                <Grid>
+                    <div id="pokedex" className="pokedex">
+                    {
+                        list.map((pokemon, index) => (
+                            <Link key={index} to={`pokemon/${pokemon.name}`}>
+                                <Card pokemon={pokemon}/>
+                            </Link>  
+                        ))
+                    }
+                    </div>
+                </Grid>
+            </Spikes>
         </Section>
     );
 }

@@ -1,9 +1,9 @@
 import './ImageMask.css';
 
-function ImageMask({image, children})
+function ImageMask({imageRef, image, children})
 {
     return (
-        <div className='wrapper__image' style={{'--masking': `url(${image})`}}>
+        <div ref={imageRef} className='wrapper__image' style={{'--masking': `url(${image})`}}>
             <div className="image--masking">
                 {children}
             </div>

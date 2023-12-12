@@ -9,7 +9,7 @@ function Header ()
 {
     return (
         <header className="wrapper__header">
-            <div className="header m-[120px]">
+            <div className="header m-[32px] md:m-[120px]">
                 <div className="header__logo">
                     <a href="/">
                         <img src={Logo} alt="logo" />
@@ -18,18 +18,18 @@ function Header ()
                 <nav className="header__navigate">
                     <ul className="navigate__list">
                         <li className='navigate__item'>
-                            <a className='navigate__link font-16' href="/#pokedex">
+                            <a className='navigate__link' href="/#pokedex">
                                 Pokédex
                             </a>
                         </li>
                         <li className='navigate__item'>
-                            <a className='navigate__link font-16' href="/#whos-that-pokemon">
+                            <a className='navigate__link' href="/#whos-that-pokemon">
                                 Qual é esse pokemon?
                             </a>
                         </li>
-                        <li className='navigate__item'>
+                        {/* <li className='navigate__item'>
                             <ButtonIcon icon={Search} alt="icone de pesquisa" text="Pesquisar..." />
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>

@@ -1,19 +1,24 @@
 import "./Introduction.css";
 
-import Section from "../../main/template/Section";
+import Section, { Grid } from "../../main/template/Section";
+import Pikachu from '../../assets/pikachu.png';
 import ImageMask from "../../components/ImageMask";
 
-function Introduction ({pokemon})
-{
+function Introduction ()
+{   
     return (
         <Section>
-            <div className="s-text">
-                <h4 className="font-cairo">Explore o Universo Pokémon</h4>
-                <h1 className="font-cairo font-bold">com nossa <span className="color-red">Pokédex</span></h1>
-            </div>
-            <ImageMask image={pokemon.sprite} >
-                <img src={pokemon.sprite} alt={`Contém a image do pokemon ${pokemon.name}`} />
-            </ImageMask>
+            <Grid cols={true}>
+                <div className="h-introduction__text">
+                    <h4 className="font-cairo">Explore o Universo Pokémon</h4>
+                    <h1 className="font-cairo font-bold">com nossa <span className="color-red">Pokédex</span></h1>
+                </div>
+                <div className="h-introduction__image">
+                    <ImageMask image={Pikachu}>
+                        <img src={Pikachu} alt={`Contém a image do pokemon ${name}`} />
+                    </ImageMask>
+                </div>
+            </Grid>
         </Section>
     );
 }

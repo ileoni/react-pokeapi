@@ -1,33 +1,28 @@
 import { useEffect, useState } from "react";
 
-import { getAll, getByName, randomPokemon } from '../../services/PokeapiService';
 import Introduction from "./introduction";
 import Pokedex from "./Pokedex";
 import WhosThatPokemon from "./WhosThatPokemon";
 
+import { findPokemonByName, getPokemons } from "../../services/HomeService";
+
 function Home()
 {
-    const [pikachu, setPokemon] = useState({});
     const [pokemons, setPokemons] = useState([]);
 
-    useEffect(() => {
-        console.log('aqui')
-        // getByName('pikachu')
-        //     .then(setPokemon);
-
-        // getAll(12)
-        //     .then(setPokemons);
-    }, []);
+    useEffect(() => {getPokemons().then(setPokemons)}, [])
 
     return (
         <>
-            {/* <Introduction pokemon={pikachu}/>
+            <Introduction/>
             {
-                !!pokemons.length && (<Pokedex list={pokemons}/>)
+                pokemons && (
+                    <>
+                        <Pokedex pokemons={pokemons}/>
+                        <WhosThatPokemon pokemons={pokemons}/>
+                    </>
+                )
             }
-            {
-                !!pokemons.length && (<WhosThatPokemon pokemons={pokemons}/>)
-            } */}
         </>
     );
 }

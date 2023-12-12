@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import './Carousel.css';
 import ImageMask from './ImageMask';
 
-function Carousel({ activated, evolutions })
+function Carousel({ pokemonName, evolutions })
 {
     const carousel = useRef(null);
 
@@ -54,13 +54,13 @@ function Carousel({ activated, evolutions })
         <>
         <div ref={carousel} className="carousel">
             {
-                evolutions?.map(({name, sprite}, index) => (
+                evolutions?.map(({name, image}, index) => (
                     <div 
                         key={index} 
-                        className={`carousel__item ${activated === name ? 'carousel__item--activated': ''}`}
+                        className={`carousel__item ${pokemonName === name ? 'carousel__item--activated': ''}`}
                     >
-                        <ImageMask image={sprite}>
-                            <img className="carousel__image" src={sprite} alt={`imagem do pokemon ${name}`} />
+                        <ImageMask image={image}>
+                            <img className="carousel__image" src={image} alt={`imagem do pokemon ${name}`} />
                         </ImageMask>
                     </div>
                 ))

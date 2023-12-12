@@ -1,20 +1,18 @@
-import './Evolutions.css';
-
+import Section, { Background, Grid } from '../../main/template/Section';
 import Carousel from '../../components/Carousel';
 
-function Evolutions({pokemon, evolutions})
+function Evolutions({pokemon})
 {
+    const {name, evolutions} = pokemon;
+
     return (
-        <>
-            {
-                evolutions && (
-                    <Carousel 
-                        activated={pokemon} 
-                        evolutions={evolutions}
-                    />
-                )
-            }
-        </>
+        <Section>
+            <Background className="details--gradient">
+                <Grid>
+                    <Carousel pokemonName={name} evolutions={evolutions}/>
+                </Grid>
+            </Background>
+        </Section>
     );
 }
 
