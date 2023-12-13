@@ -10,43 +10,52 @@ function Carousel({ pokemonName, evolutions })
         const {children} = carousel.current;
         initial(children);
     })
+    
+    const data = ({previousElementSibling, nextElementSibling, clientWidth}) => {
+        return {
+            prev: previousElementSibling,
+            next: nextElementSibling,
+            width: clientWidth,
+            nagativeWidth: clientWidth * -1,
+        }
+    }
+
+    const first = (records) => records.at(0)
+
+    const last = (records) => records.at(-1)
+
+    const isActivated = ({classList}) => classList.contains('carousel__item--activated')
+
+    const translateX = (element, width) => element.style.transform = `translatex(${width}px)`;
 
     const initial = (records) => {
-        const {length} = records;
-        const [activated] = [...records].filter(({classList}) => classList.contains('carousel__item--activated'));
-        const width = activated.clientWidth;
+        const arrayFromRecords = Array.from(records);
+        const start = first(arrayFromRecords);
+        const end = last(arrayFromRecords);
+        const activated = arrayFromRecords.find(isActivated);
 
-        const prev = activated.previousElementSibling;
-        const next = activated.nextElementSibling;
+        const {prev, next, width, nagativeWidth} = data(activated);
 
-        if(prev) {
-            prev.style.transform = `translatex(-${width}px)`;
-        } else {
-            records[length - 1].style.transform = `translatex(-${width}px)`;
-        }
+        (prev) ? translateX(prev, nagativeWidth): translateX(end, nagativeWidth);
 
-        if(next) {
-            next.style.transform = `translatex(${width}px)`;
-        } else {
-            records[0].style.transform = `translatex(${width}px)`;
-        }
-
-        activated.style.transform = `translatex(0)`
+        (next) ? translateX(next, width): translateX(start, width);
+       
+        translateX(activated, 0);
     }
 
     useEffect(() => {
         const {children} = carousel.current;
-        [...children].map(child => {
+        Array.from(children).map(child => {
             child.addEventListener('click', () => {
-                choose(child, 'carousel__item--activated');
+                toggleClasse(child, 'carousel__item--activated');
                 initial(children);
             })
         })
     }, [])
 
-    const choose = (child, className) => {
+    const toggleClasse = (child, className) => {
         const {children} = carousel.current;
-        [...children].map(({classList}) => classList.remove(className))
+        Array.from(children).map(({classList}) => classList.remove(className))
         child.classList.add(className);
     }
 
@@ -56,8 +65,8 @@ function Carousel({ pokemonName, evolutions })
             {
                 evolutions?.map(({name, image}, index) => (
                     <div 
-                        key={index} 
-                        className={`carousel__item ${pokemonName === name ? 'carousel__item--activated': ''}`}
+                        key={index}
+                        className={`carousel__item ${pokemonName === name && 'carousel__item--activated'}`}
                     >
                         <ImageMask image={image}>
                             <img className="carousel__image" src={image} alt={`imagem do pokemon ${name}`} />
