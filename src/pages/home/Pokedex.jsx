@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 import Section, { Grid, Spikes } from "../../main/template/Section";
 import Card from "../../components/Card";
+import SkeletonPokedex from "./SkeletonPokedex";
 
-function Pokedex({pokemons})
+function Pokedex({pokemons, loading})
 {
     const [list, setList] = useState([]);
     
@@ -17,15 +18,19 @@ function Pokedex({pokemons})
         <Section>
             <Spikes className="bg-yellow-fifth spikes--bottom">
                 <Grid>
-                    <div id="pokedex" className="pokedex">
                     {
-                        list.map((pokemon, index) => (
-                            <Link key={index} to={`pokemon/${pokemon.name}`}>
-                                <Card pokemon={pokemon}/>
-                            </Link>  
-                        ))
+                        loading && (
+                            <SkeletonPokedex/>
+                        ) || (
+                            <div id="pokedex" className="pokedex">{
+                                list.map((pokemon, index) => (
+                                    <Link key={index} to={`pokemon/${pokemon.name}`}>
+                                        <Card pokemon={pokemon}/>
+                                    </Link>  
+                                ))
+                            }</div>
+                        )
                     }
-                    </div>
                 </Grid>
             </Spikes>
         </Section>
@@ -33,3 +38,13 @@ function Pokedex({pokemons})
 }
 
 export default Pokedex;
+
+{/* <div id="pokedex" className="pokedex">
+{
+    list.map((pokemon, index) => (
+        <Link key={index} to={`pokemon/${pokemon.name}`}>
+            <Card pokemon={pokemon}/>
+        </Link>  
+    ))
+}
+</div> */}

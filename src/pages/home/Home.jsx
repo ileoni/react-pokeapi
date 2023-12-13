@@ -8,9 +8,14 @@ import { findPokemonByName, getPokemons } from "../../services/HomeService";
 
 function Home()
 {
+    const [loading, isLoading] = useState(true);
     const [pokemons, setPokemons] = useState([]);
 
-    useEffect(() => {getPokemons().then(setPokemons)}, [])
+    useEffect(() => {
+        getPokemons()
+            .then(setPokemons)
+            .then(_ => isLoading(false))
+    }, [])
 
     return (
         <>
@@ -18,7 +23,7 @@ function Home()
             {
                 pokemons && (
                     <>
-                        <Pokedex pokemons={pokemons}/>
+                        <Pokedex pokemons={pokemons} loading={loading}/>
                         <WhosThatPokemon pokemons={pokemons}/>
                     </>
                 )

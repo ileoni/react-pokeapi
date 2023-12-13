@@ -1,52 +1,61 @@
+:root {
+    --start: var(--bg-yellow-sixth);
+    --midle: white;
+    --end: var(--bg-yellow-first);
+}
+
 .wrapper__card {
-    padding: 12px;
-    position: relative;
-}
-
-.wrapper__card * {
-    position: relative;
-    z-index: 1;
-}
-
-.wrapper__card::before {
-    content: "";
-    position: absolute;
-    inset: 30% 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, #FFF0, var(--bg-yellow-sixth));
-    box-shadow: 0px 16px 16px -8px #00000040;
-    border-radius: 8px;
-}
-
-.card__text {
-    height: 30px;
     display: grid;
-    grid-template-columns: repeat(2, auto) 12px;
-    place-items: baseline center;
+    border-radius: 8px;
+    background: var(--card-gradient);
+    box-shadow: var(--card-box-shadow);
 }
 
-.card__name {
-    justify-self: start;
-    text-transform: capitalize;
-    font-weight: 600;
+.card__image {
+    height: 200px;
+    width: 200px;
+    justify-self: center;
 }
 
-.card__number {
-    justify-self: end;
-    padding-right: 8px;
+.card__image:empty {
+    height: 200px;
+    mask-image: url(../assets/pokebola.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
 }
 
-.card__pokebola {
-    height: 12px;
-    width: 12px;
-    justify-self: end;
-    position: relative;
+.card__content {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 40% 20% 10%;
+    place-items: baseline stretch;
+    place-content: space-evenly;
 }
 
-.card__pokebola::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    background-image: url(../assets/pokebola.svg);
-    background-size: cover;
+.card__name,
+.card__number,
+.card__icon {
+    height: 25px;
+    display: block;
 }
+
+.card__icon {
+    align-self: start;
+}
+
+.card__icon > .pokeball {
+    background: var(--red-third);
+}  
+
+/* .skeleton:empty {
+    border-radius: 4px;
+    animation: 800ms animate alternate infinite;
+}
+
+@keyframes animate {
+    0% {background: linear-gradient(90deg, var(--start) 0%, var(--midle) 0%, var(--end) 100%);}
+    25% {background: linear-gradient(90deg, var(--start) 0%, var(--midle) 25%, var(--end) 100%);}
+    50% {background: linear-gradient(90deg, var(--start) 25%, var(--midle) 50%, var(--end) 100%);}
+    75% {background: linear-gradient(90deg, var(--start) 50%, var(--midle) 75%, var(--end) 100%);}
+    100% {background: linear-gradient(90deg, var(--start) 75%, var(--midle) 100%, var(--end) 100%);}
+} */
