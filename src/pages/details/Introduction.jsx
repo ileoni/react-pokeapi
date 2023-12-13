@@ -9,9 +9,12 @@ function Introduction({pokemon})
     return (
         <Section>
             <Grid cols={true}>
-                <div className='d-introduction__text'>
-                    <h4 className='flex items-center gap-2 color-red'>
-                        Nº {id} <i className="pokeball h-[25px] w-[25px]"></i>
+                <div className='d-introduction__content'>
+                    <h4 className='flex items-center gap-2'>
+                        <span className='d-introduction__title'>Nº {id}</span> 
+                        <span className='d-introduction__icon h-[25px] w-[25px]'>
+                            <i className="pokeball"></i>
+                        </span>
                     </h4>
                     <h1 className='capitalize font-bold'>{name}</h1>
                     <p>{replaceScape(text)}</p>           

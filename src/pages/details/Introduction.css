@@ -1,6 +1,14 @@
-.d-introduction__text {
+.d-introduction__content {
     display: grid;
     place-content: center start;
+}
+
+.d-introduction__title {
+    color: var(--red-third);
+}
+
+.d-introduction__icon > .pokeball {
+    background: var(--red-third);
 }
 
 .d-introduction__image {
