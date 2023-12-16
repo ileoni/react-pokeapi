@@ -4,14 +4,14 @@ import { weightMask, heightMask } from '../utils/Helpers'
 
 function HeightCharts({ pokemonName, evolutions })
 {
-    const activatedPokemon = (pokemon) => pokemon.name === pokemonName; 
+    const activatedPokemon = (pokemon) => pokemon.name === pokemonName ? 'hc-card--activated': ''; 
 
     return (
         <>
         <div className="height-chart">
             {
                 evolutions && evolutions.map((evolution, index) => (
-                    <div className={`hc-card ${activatedPokemon(evolution) ? 'hc-card--activated': ''}`} key={index}>
+                    <div className={`hc-card ${activatedPokemon(evolution)}`} key={index}>
                         <div className="hc-weight">
                             <img className="hc-weight__image" src={evolution.image} alt={evolution.name} />
                             <span className="hc-weight__text">{weightMask(evolution.weight)}</span>
