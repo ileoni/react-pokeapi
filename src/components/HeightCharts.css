@@ -1,74 +1,82 @@
-.height-charts {
+.height-chart {
     display: grid;
-    grid-template-columns: 25% 30% 45%;
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-flow: column;
-    place-items: end;
+    grid-auto-rows: 10px;
+    align-items: end;
 }
 
-.compare_pokemon {
-    margin-right: 64px;
+.hc-card {
     display: flex;
+    filter: brightness(0.2) opacity(0.3);
 }
 
-.hc__pokemon {
-    position: relative;
+.hc-card--activated {
+    filter: brightness(0.1) opacity(0.8);
 }
 
-.height__pokemon {
-    filter: brightness(0.1) opacity(0.4);
+.hc-card:nth-child(1),
+.hc-card:nth-child(1) .hc-weight__image {
+    height: 80px;
 }
 
-.height__pokemon--active {
-    filter: brightness(0) opacity(0.8);
+.hc-card:nth-child(2),
+.hc-card:nth-child(2) .hc-weight__image {
+    height: 100px;
 }
 
-.h-weight__text {
-    position: absolute;
-    inset: auto 0;
-    bottom: -30px;
+.hc-card:nth-child(3),
+.hc-card:nth-child(3) .hc-weight__image {
+    height: 120px;
+}
+
+.hc-weight {
+    height: inherit;
     display: grid;
-    justify-content: center;
-    font-weight: 400;
+    place-items: center;
 }
 
-.height__pokemon--active + .h-weight__text {
+.hc-weight__image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.hc-weight__text {
+    font-weight: 600;
+    font-family: var(--cairo);
+}
+
+.hc-card--activated .hc-weight__text {
     font-weight: 900;
 }
 
-.hc__height {
-    height: inherit;
-    position: relative;
-    filter: brightness(0);
+.hc-height {
+    display: flex;
+    align-items: center;
 }
 
-.height__image {
+.hc-height__image {
     height: 100%;
-    width: 40px;
     object-fit: cover;
-    filter: brightness(0);
 }
 
-.h-height__text {
-    position: absolute;
-    inset: auto;
-    bottom: 0;
-    right: -48px;
+.hc-height__text {
+    font-weight: 600;
+    font-family: var(--cairo);
 }
+
+
+.hc-card--activated .hc-height__text {
+    font-weight: 900;
+}
+
 
 @media (max-width: 600px) {
-    .height-charts {
+    .height-chart {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
         grid-auto-flow: row;
         justify-items: center;
         gap: 32px;
-    }
-    .compare_pokemon {
-        height: 100%;
-        width: 50%;
-    }
-    .height__pokemon,
-    .height__image {
-        height: 100%;
-        object-fit: contain;
     }
 }

@@ -34,7 +34,7 @@ function Features({pokemon})
                     </div>
                     <div className="grid mt-8 md:m-0">
                         <h4 className='cairo'>Altura</h4>
-                        <div className='self-center py-16 md:p-0'>
+                        <div className='self-center pb-16 md:p-0'>
                             <HeightCharts pokemonName={name} evolutions={evolutions}/>
                         </div>
                     </div>
