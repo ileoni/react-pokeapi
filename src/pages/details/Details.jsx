@@ -14,7 +14,7 @@ function Details()
     const [loading, isLoading] = useState(false);
     const [pokemon, setPokemon] = useState(null);
 
-    let endpoint = String(location.pathname).replace('/react-pokeapi/', '/');;
+    let endpoint = String(location.hash).replace('#/', '/');;
 
     useEffect(() => {
         getPokemonDetails(endpoint)

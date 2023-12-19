@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom';
 import './Header.css';
 
 import Logo from '../../assets/logo.svg';
-import Search from '../../assets/Search.svg';
-import ButtonIcon from '../../components/ButtonIcon';
 
 function Header ()
 {
@@ -27,9 +24,6 @@ function Header ()
                                 Qual é esse pokemon?
                             </a>
                         </li>
-                        {/* <li className='navigate__item'>
-                            <ButtonIcon icon={Search} alt="icone de pesquisa" text="Pesquisar..." />
-                        </li> */}
                     </ul>
                 </nav>
             </div>
