@@ -1,28 +1,31 @@
 import './Header.css';
 
+import { HashLink } from 'react-router-hash-link';
 import Logo from '../../assets/logo.svg';
 
 function Header ()
 {
+    const baseUrl = import.meta.env.BASE_URL;
+    
     return (
         <header className="wrapper__header">
             <div className="header m-[32px] md:m-[120px]">
                 <div className="header__logo">
-                    <a href={import.meta.env.BASE_URL}>
+                    <HashLink to="/">
                         <img src={Logo} alt="logo" />
-                    </a>
+                    </HashLink>
                 </div>
                 <nav className="header__navigate">
                     <ul className="navigate__list">
                         <li className='navigate__item'>
-                            <a className='navigate__link' href="/#pokedex">
+                            <HashLink className='navigate__link' to="/#pokedex">
                                 Pokédex
-                            </a>
+                            </HashLink>
                         </li>
                         <li className='navigate__item'>
-                            <a className='navigate__link' href="/#whos-that-pokemon">
+                            <HashLink className='navigate__link' to="/#whos-that-pokemon">
                                 Qual é esse pokemon?
-                            </a>
+                            </HashLink>
                         </li>
                     </ul>
                 </nav>
