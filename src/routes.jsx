@@ -7,10 +7,10 @@ import Default from "./pages/default";
 function Routes()
 {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
             <Switch>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/pokemon/:name" element={<Details/>}/>
+                <Route exact path="/pokemon/:name" element={<Details/>}/>
                 <Route path="/default" element={<Default/>}/>
             </Switch>
         </BrowserRouter>
