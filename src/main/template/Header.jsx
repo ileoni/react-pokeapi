@@ -11,7 +11,7 @@ function Header ()
         <header className="wrapper__header">
             <div className="header m-[32px] md:m-[120px]">
                 <div className="header__logo">
-                    <a href="/">
+                    <a href={import.meta.env.BASE_URL}>
                         <img src={Logo} alt="logo" />
                     </a>
                 </div>
