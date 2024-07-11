@@ -8,7 +8,7 @@ function Evolutions({pokemon})
         <Section>
             <Background className="details--gradient">
                 <Grid>
-                    <Carousel3D name={name} evolutions={evolutions}></Carousel3D>
+                    <Carousel3D evolutions={evolutions}></Carousel3D>
                 </Grid>
             </Background>
         </Section>

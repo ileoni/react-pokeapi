@@ -8,21 +8,22 @@ import Stats from './Stats';
 import Evolutions from './Evolutions';
 
 import Loading from '../../components/Loading';
+import { useParams } from 'react-router-dom';
 
 function Details()
 {   
+    const { name } = useParams();
+
     const [loading, isLoading] = useState(false);
     const [pokemon, setPokemon] = useState(null);
 
-    // HashRouter
-    let endpoint = String(location.hash).replace('#/', '/');
-    endpoint = location.pathname.replace(import.meta.env.BASE_URL, "");
-
     useEffect(() => {
+        const endpoint = `/pokemon/${name}`;
+        
         getPokemonDetails(endpoint)
             .then(setPokemon)
             .then(_ => isLoading(true));
-    }, [])
+    }, [name])
 
     return (
         <>

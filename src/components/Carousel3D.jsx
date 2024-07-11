@@ -1,12 +1,14 @@
 import "./Carousel3D.css";
 import { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import GlowUp from "./GlowUp";
 
-function Carousel3D({ name, evolutions })
+function Carousel3D({ evolutions })
 {
+    const { name } = useParams();
+
     const [pokemons, setPokemons] = useState(evolutions);
 
     const angle = 360 / evolutions.length;
@@ -101,7 +103,10 @@ function Carousel3D({ name, evolutions })
             const [ first ] = carousel.children;
             const pokemonName = first.dataset.name;
 
-            if(pokemonName !== name) navigate(`/`);
+            if(pokemonName !== name) {
+                navigate(`../pokemon/${pokemonName}`, { replace: true });
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
         }
     }
 
@@ -111,10 +116,8 @@ function Carousel3D({ name, evolutions })
         const carousel = carouselRef.current;
         carousel.addEventListener("click", handleClick);
         
-        return () => {
-            carousel.removeEventListener("click", handleClick);
-        }
-    }, []);
+        return () => carousel.removeEventListener("click", handleClick);
+    }, [name]);
 
     return (
         <>
@@ -123,13 +126,13 @@ function Carousel3D({ name, evolutions })
                 {
                     pokemons && pokemons.map(
                         (pokemon, index) => (
-                            <Link to={`/pokemon/${pokemon.name}`} key={index} className={`carousel-card`} data-name={pokemon.name}>
+                            <div key={index} className={`carousel-card`} data-name={pokemon.name}>
                                 <p className="card__pokemon-id" data-id={pokemon.id}>{pokemon.id}</p>
                                 <p className="card__pokemon-name" data-name={pokemon.name}>{pokemon.name}</p>
                                 <GlowUp maskImage={pokemon.image}>
                                     <img className="carousel-card__image" src={pokemon.image} alt={pokemon.name} />
                                 </GlowUp>
-                            </Link>
+                            </div>
                         )
                     )
                 }
