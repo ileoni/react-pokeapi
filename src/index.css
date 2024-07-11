@@ -1,5 +1,6 @@
 @import "./assets/css/pokemon-color.css";
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -39,9 +40,11 @@
   --card-box-shadow: 0px 16px 16px -8px #00000040;
 
   --home-gradient: linear-gradient(60deg, #FCF300 30%, transparent 100%);
-  --details-gradient: linear-gradient(180deg, #FDF752AA 10%, transparent 100%);
+  /* details-gradient - FDF752AA */
+  --details-gradient: linear-gradient(180deg, #464516aa, 40%, transparent 100%);
   --loading-gradient: linear-gradient(60deg, white 10%, transparent 100%);
 
+  --glow-up-gradient: linear-gradient(160deg, #ffffffd9 4%, transparent 50%);
 }
 
 .dash { border: 1px dashed; }
