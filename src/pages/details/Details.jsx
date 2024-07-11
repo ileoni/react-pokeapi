@@ -14,7 +14,9 @@ function Details()
     const [loading, isLoading] = useState(false);
     const [pokemon, setPokemon] = useState(null);
 
-    let endpoint = String(location.hash).replace('#/', '/');;
+    // HashRouter
+    let endpoint = String(location.hash).replace('#/', '/');
+    endpoint = location.pathname.replace(import.meta.env.BASE_URL, "");
 
     useEffect(() => {
         getPokemonDetails(endpoint)
