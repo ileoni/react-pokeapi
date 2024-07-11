@@ -2,7 +2,7 @@ import "./Introduction.css";
 
 import Section, { Grid } from "../../main/template/Section";
 import Pikachu from '../../assets/pikachu.png';
-import ImageMask from "../../components/ImageMask";
+import GlowUp from '../../components/GlowUp';
 
 function Introduction ()
 {   
@@ -14,9 +14,9 @@ function Introduction ()
                     <h1 className="font-cairo font-bold">com nossa <span className="color-red">Pokédex</span></h1>
                 </div>
                 <div className="h-introduction__image">
-                    <ImageMask image={Pikachu}>
+                    <GlowUp maskImage={Pikachu}>
                         <img src={Pikachu} alt={`Contém a image do pokemon ${name}`} />
-                    </ImageMask>
+                    </GlowUp>
                 </div>
             </Grid>
         </Section>

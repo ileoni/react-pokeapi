@@ -1,5 +1,5 @@
 import "./Card.css";
-import ImageMask from './ImageMask';
+import GlowUp from "./GlowUp";
 
 function Card({pokemon})
 {
@@ -9,9 +9,9 @@ function Card({pokemon})
         <>
             <div className="wrapper__card">
                 <div className="card__image">{
-                    <ImageMask image={image}>
+                    <GlowUp maskImage={image}>
                         <img src={image} alt={name} />
-                    </ImageMask>
+                    </GlowUp>
                 }</div>
                 <div className="card__content">
                     <span className="card__name font-16 capitalize">{name}</span>

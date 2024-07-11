@@ -14,7 +14,7 @@ section {
     justify-content: center;
 }
 
-.h-whos-that-pokemon__image > .wrapper__image {
+.h-whos-that-pokemon__image > .image--glow-up {
     width: 300px;
     position: relative;
     filter: brightness(0.01);

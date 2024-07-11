@@ -7,6 +7,7 @@ import ImageMask from "../../components/ImageMask";
 
 import { getRandomPokemon } from "../../services/HomeService";
 import { whosThatPokemon } from "../../services/WhosThatPokemonService";
+import GlowUp from "../../components/GlowUp";
 
 function WhosThatPokemon({pokemons})
 {
@@ -53,9 +54,12 @@ function WhosThatPokemon({pokemons})
                         </div>
                     </div>
                     <div className="h-whos-that-pokemon__image">
-                        <ImageMask imageRef={imageRef} image={pokemon?.image}>
+                        <GlowUp imageRef={imageRef} maskImage={pokemon?.image}>
                             <img src={pokemon?.image} alt="Mostra a imagem de um pokemon aleatório"/>
-                        </ImageMask>
+                        </GlowUp>
+                        {/* <ImageMask imageRef={imageRef} image={pokemon?.image}>
+                            <img src={pokemon?.image} alt="Mostra a imagem de um pokemon aleatório"/>
+                        </ImageMask> */}
                     </div>
                 </Grid>
             </Background>
