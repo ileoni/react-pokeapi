@@ -1,4 +1,4 @@
-import { Command } from "lucide-react";
+import { Keyboard } from "lucide-react";
 import { useEffect } from "react";
 
 function Input ({inputRef, keyDown})
@@ -14,7 +14,7 @@ function Input ({inputRef, keyDown})
                 type="text"
             />
             <small className="flex items-center justify-self-center py-1 px-2 rounded bg-yellow-first font-bold">
-                <Command className="mr-2" size={14}/> Enter
+                <Keyboard className="mr-2" size={14}/> Enter
             </small>
         </div>
     );
