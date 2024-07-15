@@ -1,41 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import './Details.css';
 
-import { getPokemonDetails } from '../../services/DetailsService';
+import { getPokemon } from '../../services/ApiPokemonService';
+import { AppContext } from '../../contexts/app-context';
+
 import Introduction from './Introduction';
 import Features from './Features';
 import Stats from './Stats';
 import Evolutions from './Evolutions';
 
-import Loading from '../../components/Loading';
-import { useParams } from 'react-router-dom';
 
 function Details()
 {   
-    const { name } = useParams();
-
-    const [loading, isLoading] = useState(false);
+    const { pokemons } = useContext(AppContext)
     const [pokemon, setPokemon] = useState(null);
 
+    const { name } = useParams();
+    
     useEffect(() => {
-        const endpoint = `/pokemon/${name}`;
-        
-        getPokemonDetails(endpoint)
-            .then(setPokemon)
-            .then(_ => isLoading(true));
+        getPokemon(pokemons, name).then(pokemon => setPokemon(pokemon))
     }, [name])
 
     return (
         <>
         {
-            !loading && <Loading></Loading>
-        }
-        {
-            loading && (
+            pokemon != null && (
                 <>
                     <Introduction pokemon={pokemon}/>
-                    <Features pokemon={pokemon} />
-                    <Stats pokemon={pokemon} />
+                    <Features pokemon={pokemon}/>
+                    <Stats pokemon={pokemon}/>
                     <Evolutions pokemon={pokemon}/>
                 </>
             )

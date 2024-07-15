@@ -3,9 +3,6 @@ import HeightCharts from '../../components/HeightCharts';
 
 function Features({pokemon})
 {
-    const {name, types, evolutions} = pokemon;
-    const {type, weakeness} = types;
-
     return (
         <Section section="bg-yellow-fifth" spikes={true}>
             <Spikes className="bg-yellow-fifth">
@@ -14,7 +11,7 @@ function Features({pokemon})
                         <div className="details__types">
                             <h4 className='cairo'>Tipo</h4>
                             {
-                                type.map((type, index) => (
+                                pokemon.types && pokemon.types.map((type, index) => (
                                     <span key={index} className={`${type} d-type inline-block capitalize mt-5 mr-2`}>
                                         {type}
                                     </span>
@@ -24,9 +21,9 @@ function Features({pokemon})
                         <div className="details__damages mt-8">
                             <h4 className='cairo'>Fraqueza</h4>
                             {
-                                weakeness.map((type, index) => (
-                                    <span key={index} className={`${type} d-type inline-block capitalize mt-5 mr-2`}>
-                                        {type}
+                                pokemon.weaknesses && pokemon.weaknesses.map((weakness, index) => (
+                                    <span key={index} className={`${weakness} d-type inline-block capitalize mt-5 mr-2`}>
+                                        {weakness}
                                     </span>
                                 ))
                             }
@@ -35,7 +32,7 @@ function Features({pokemon})
                     <div className="grid mt-8 md:m-0">
                         <h4 className='cairo'>Altura</h4>
                         <div className='self-center pb-16 md:p-0'>
-                            <HeightCharts pokemonName={name} evolutions={evolutions}/>
+                            <HeightCharts pokemonName={pokemon.name} evolutions={pokemon.evolutions}/>
                         </div>
                     </div>
                 </Grid>

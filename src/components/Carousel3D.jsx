@@ -129,8 +129,8 @@ function Carousel3D({ evolutions })
                             <div key={index} className={`carousel-card`} data-name={pokemon.name}>
                                 <p className="card__pokemon-id" data-id={pokemon.id}>{pokemon.id}</p>
                                 <p className="card__pokemon-name" data-name={pokemon.name}>{pokemon.name}</p>
-                                <GlowUp maskImage={pokemon.image}>
-                                    <img className="carousel-card__image" src={pokemon.image} alt={pokemon.name} />
+                                <GlowUp maskImage={pokemon.sprite}>
+                                    <img className="carousel-card__image" src={pokemon.sprite} alt={pokemon.name} />
                                 </GlowUp>
                             </div>
                         )

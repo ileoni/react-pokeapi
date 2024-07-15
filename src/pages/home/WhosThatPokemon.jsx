@@ -3,9 +3,8 @@ import "./WhosThatPokemon.css";
 
 import Input from "../../components/Input";
 import Section, { Background, Grid } from "../../main/template/Section";
-import ImageMask from "../../components/ImageMask";
 
-import { getRandomPokemon } from "../../services/HomeService";
+import { getPokemonRandom } from "../../services/ApiPokemonService";
 import { whosThatPokemon } from "../../services/WhosThatPokemonService";
 import GlowUp from "../../components/GlowUp";
 
@@ -36,7 +35,7 @@ function WhosThatPokemon({pokemons})
     }
 
     const pokemonRandom = () => {
-        getRandomPokemon(pokemons).then(setPokemon)
+        getPokemonRandom(pokemons).then(pokemon => setPokemon(pokemon));
         setLoading(false);
     }
 
@@ -54,12 +53,9 @@ function WhosThatPokemon({pokemons})
                         </div>
                     </div>
                     <div className="h-whos-that-pokemon__image">
-                        <GlowUp imageRef={imageRef} maskImage={pokemon?.image}>
-                            <img src={pokemon?.image} alt="Mostra a imagem de um pokemon aleatório"/>
+                        <GlowUp imageRef={imageRef} maskImage={pokemon?.sprite}>
+                            <img src={pokemon?.sprite} alt="Mostra a imagem de um pokemon aleatório"/>
                         </GlowUp>
-                        {/* <ImageMask imageRef={imageRef} image={pokemon?.image}>
-                            <img src={pokemon?.image} alt="Mostra a imagem de um pokemon aleatório"/>
-                        </ImageMask> */}
                     </div>
                 </Grid>
             </Background>

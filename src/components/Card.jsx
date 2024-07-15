@@ -3,14 +3,17 @@ import GlowUp from "./GlowUp";
 
 function Card({pokemon})
 {
-    const { id, name, image } = pokemon;
+    const { id, name, sprite } = pokemon;
 
     return (
         <>
             <div className="wrapper__card">
                 <div className="card__image">{
-                    <GlowUp maskImage={image}>
-                        <img src={image} alt={name} />
+                    <GlowUp maskImage={sprite}>
+                        <picture>
+                            <source type="image/webp" srcSet={sprite} />
+                            <img loading="lazy" src={sprite} alt={`imagem do ${name}`} />
+                        </picture>
                     </GlowUp>
                 }</div>
                 <div className="card__content">

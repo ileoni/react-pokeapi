@@ -1,15 +1,15 @@
-import { BrowserRouter } from 'react-router-dom';
 import './App.css'
 
 import Header from './template/Header';
 import Routes from '../routes';
+import { AppContextProvider } from '../contexts/app-context';
 
 function App() {
   return (
-    <>
-        <Header/>
-        <Routes/>
-    </>
+    <AppContextProvider>
+      <Header/>
+      <Routes/>
+    </AppContextProvider>
   )
 }
 

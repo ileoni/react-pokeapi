@@ -1,29 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 import Introduction from "./introduction";
 import Pokedex from "./Pokedex";
 import WhosThatPokemon from "./WhosThatPokemon";
 
-import { findPokemonByName, getPokemons } from "../../services/HomeService";
+import { AppContext } from "../../contexts/app-context";
 
 function Home()
 {
-    const [loading, isLoading] = useState(true);
-    const [pokemons, setPokemons] = useState([]);
-
-    useEffect(() => {
-        getPokemons()
-            .then(setPokemons)
-            .then(_ => isLoading(false))
-    }, [])
+    const { pokemons } = useContext(AppContext);
 
     return (
         <>
             <Introduction/>
             {
-                pokemons && (
+                pokemons.length > 0 && (
                     <>
-                        <Pokedex pokemons={pokemons} loading={loading}/>
+                        <Pokedex pokemons={pokemons} />
                         <WhosThatPokemon pokemons={pokemons}/>
                     </>
                 )
