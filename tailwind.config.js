@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'anton': "'Anton', sans-serif",
+        'cairo': "'Cairo', sans-serif",
+        'montserrat': "'Montserrat', sans-serif",
+        'roboto': "'Roboto', sans-serif",
+      }
+    },
   },
   plugins: [],
 }
