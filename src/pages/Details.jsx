@@ -10,10 +10,15 @@ import RechartsRadar from "../components/ui/RechartsRadar";
 import PillType from "../components/ui/PillType";
 import HeightChart from "../components/HeightChart";
 import Carousel from "../components/ui/Carousel";
+import { useEffect } from "react";
 
 function Details() {
     const { name } = useParams();
     const {data, loading} = usePokemon(name);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
         <>
