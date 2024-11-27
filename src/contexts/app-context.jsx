@@ -1,23 +1,19 @@
-import { useState, useEffect, createContext } from 'react';
+import { createContext, useReducer, useState } from "react";
 
-import { fetchData } from '../services/ApiPokemonService';
+export const AppContext = createContext();
 
-export const AppContext = createContext({});
-
-export const AppContextProvider = ({ children }) => {
-    const [pokemons, setPokemons] = useState([]);
-
-    useEffect(() => {
-        fetchData()
-            .then(data => setPokemons(data));
-    }, [])
-
+function AppContextProvider({children}) {
+    const [heFinished, setHeFinished] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
     
     return (
-        <AppContext.Provider value={{ 
-            pokemons 
+        <AppContext.Provider value={{
+            heFinished, setHeFinished,
+            currentIndex, setCurrentIndex
         }}>
             {children}
         </AppContext.Provider>
-    );
+    )
 }
+
+export default AppContextProvider;

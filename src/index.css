@@ -1,11 +1,9 @@
 @import "./assets/css/pokemon-color.css";
-/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 :root {
   --bg-yellow-first: #FCF300;
@@ -22,16 +20,9 @@
   --secondary: #495057;
   --tertiary: #e9ecef;
 
+  --montserrat: 'Roboto', sans-serif;
   --roboto: 'Roboto', sans-serif;
   --cairo: 'Cairo', sans-serif;
-
-  --font-size-50: 50px;
-  --font-size-40: 40px;
-  --font-size-30: 30px;
-  --font-size-25: 25px;
-  --font-size-20: 20px;
-  --font-size-16: 16px;
-  --font-size-12: 12px;
 
   background-color: var(--bg-yellow-first);
   color: var(--primary);
@@ -68,6 +59,12 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--red-third);
 }
 
+input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
 button {
   margin: 0;
   padding: 0;
@@ -81,124 +78,20 @@ ul {
   list-style: none;
 }
 
-h1 {font-size: 50px;}
-h2 {font-size: 40px;}
-h3 {font-size: 30px;}
-h4 {font-size: 25px;}
-h5 {font-size: 20px;}
-h6 {font-size: 16px;}
-
-.font-50 {font-size: var(--font-size-50);}
-.font-40 {font-size: var(--font-size-40);}
-.font-30 {font-size: var(--font-size-30);}
-.font-25 {font-size: var(--font-size-25);}
-.font-20 {font-size: var(--font-size-20);}
-.font-16 {font-size: var(--font-size-16);}
-.font-12 {font-size: var(--font-size-12);}
-
-.bg-yellow-first {
-  background-color: var(--bg-yellow-first);
-}
-.bg-yellow-second {
-  background-color: var(--bg-yellow-second);
-}
-.bg-yellow-third {
-  background-color: var(--bg-yellow-third);
-}
-.bg-yellow-fourth {
-  background-color: var(--bg-yellow-fourth);
-}
-.bg-yellow-fifth {
-  background-color: var(--bg-yellow-fifth);
-}
-.color-yellow-sixth {
-  background-color: var(--bg-yellow-sixth);
-}
-
-.color-yellow-first {
-  color: var(--bg-yellow-first);
-}
-.color-yellow-second {
-  color: var(--bg-yellow-second);
-}
-.color-yellow-third {
-  color: var(--bg-yellow-third);
-}
-.color-yellow-fourth {
-  color: var(--bg-yellow-fourth);
-}
-.color-yellow-fifth {
-  color: var(--bg-yellow-fifth);
-}
-.color-yellow-sixth {
-  color: var(--bg-yellow-sixth);
-}
-
-.bg-red {
-  background-color: var(--red-third);
-}
-
-.color-red {
-  color: var(--red-third);
-}
-
-.font-roboto {
-  font-family: var(--roboto);
-}
-
-.font-cairo {
-  font-family: var(--cairo);
-}
-
-.pokeball {
-  height: 100%;
-  width: 100%;
-  display: block;
-  position: relative;
-  background: black;
-  mask: url(./assets/pokebola.svg) no-repeat;
-  mask-size: cover;
-}
-
-.home--gradient,
-.details--gradient {
-  position: relative;
-}
-
-.home--gradient::before,
-.details--gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.home--gradient::before {
-  background: var(--home-gradient);
-}
-
-.details--gradient::before {
-  background: var(--details-gradient);
-}
-
-@media (max-width: 600px) {
-  :root {
-    --font-size-35: 35px;
-    --font-size-30: 30px;
-    --font-size-25: 25px;
-    --font-size-20: 20px;
-    --font-size-16: 16px;
-    --font-size-12: 12px;
-    --font-size-12: 12px;
+@keyframes shake {
+  0% {
+    transform: translateY(0);
   }
-
-  * {
-    font-size: var(--font-size-12);
+  25% {
+    transform: translateY(8px);
   }
-
-  h1, h1 > * {font-size: var(--font-size-35)}
-  h2, h2 > * {font-size: var(--font-size-30)}
-  h3, h3 > * {font-size: var(--font-size-25)}
-  h4, h4 > * {font-size: var(--font-size-20)}
-  h5, h5 > * {font-size: var(--font-size-16)}
-  h6, h6 > * {font-size: var(--font-size-12)}
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

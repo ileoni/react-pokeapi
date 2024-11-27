@@ -1,30 +1,31 @@
 import { Link } from "react-router-dom";
 
-import Logo from '../assets/logo.svg';
+import LogoSVG from "./ui/LogoSGV";
+import { NavLink } from "react-router-dom";
 
-function Header() {
-    return (  
-        <header className='py-4 shadow-lg'>
-            <div className="max-w-5xl mx-auto px-8 xl:px-0 grid md:grid-cols-[1fr_auto] justify-center items-baseline">
+function Header(params) {
+    return (
+        <div className="w-full h-20 bg-yellow-6000 shadow">
+            <div className="px-8 lg:px-0 max-w-5xl w-full h-full mx-auto grid grid-cols-[1fr_auto] items-baseline content-center">
                 <Link to="/">
-                    <img src={Logo} alt="imagem logo" />
+                    <LogoSVG className="fill-red-primary" />
                 </Link>
-                <nav className="hidden md:block">
-                    <ul className='grid grid-flow-col auto-cols-auto gap-8'>
-                        <li>
-                            <Link to="#pokedex" className="font-roboto">
-                                Pokédex
+                <nav>
+                    <ul className="grid grid-flow-col gap-4">
+                        <li className="hidden md:block font-medium">
+                            <Link to="#">
+                                Quem é esse pokemon
                             </Link>
                         </li>
-                        <li>
-                            <Link to="#whos-that-pokemon" className="font-roboto">
-                                Quem é esse pokemon?
+                        <li className="hidden md:block font-medium">
+                            <Link to="#">
+                                Pokédex
                             </Link>
                         </li>
                     </ul>
                 </nav>
             </div>
-        </header>
+        </div>
     );
 }
 
