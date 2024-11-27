@@ -53,9 +53,9 @@ function Pokedex(props) {
             >
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {!loading && data.all().map((item, index) => (
-                        <a key={index} href={`pokemon/${item.name()}`}>
+                        <Link key={index} href={`pokemon/${item.name()}`}>
                             <Card data={item}/>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </InfiniteScroll>
