@@ -53,7 +53,7 @@ function Pokedex(props) {
             >
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {!loading && data.all().map((item, index) => (
-                        <Link key={index} href={`pokemon/${item.name()}`}>
+                        <Link key={index} to={`pokemon/${item.name()}`}>
                             <Card data={item}/>
                         </Link>
                     ))}
