@@ -17,7 +17,7 @@ function Bar({ base, name, min, max }) {
     `
 
     return (
-        <div className="mt-4 grid sm:grid-cols-[60%_auto] gap-4 items-center">
+        <div className="mt-4 grid grid-cols-[80%_auto] sm:grid-cols-[60%_auto] gap-4 items-center">
             <div className="w-full h-10 overflow-hidden relative grid items-center rounded-lg">
                 <Background />
                 <Foreground />

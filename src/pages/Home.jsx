@@ -15,10 +15,10 @@ function Home() {
             <Section>
                 <div className="grid md:grid-cols-2 items-center content-center">
                     <div>
-                        <h4 className='font-bold font-roboto'>
+                        <h4 className='font-bold font-roboto text-center md:text-start'>
                             Explore o Universo Pokémon
                         </h4>
-                        <h1 className='font-bold font-cairo'>
+                        <h1 className='font-bold font-cairo text-center md:text-start'>
                             com nossa <span className='text-red-primary'>Pokédex</span>
                         </h1>
                     </div>

@@ -40,7 +40,7 @@ function WhosThatPokemon({ data, loading }) {
     const handlerKeyDown = useCallback((e) => {
         if(e.key === KEY_ENTER) {
             const { value } = inputRef.current;
-            checkName(value);
+            checkName(String(value).toLocaleLowerCase());
         }
     }, [state])
 
@@ -59,7 +59,7 @@ function WhosThatPokemon({ data, loading }) {
                     <div>
                         <h4 className='font-roboto text-white'>Quem é esse</h4>
                         <h1 className='font-cairo text-white'>Pokemon?</h1>
-                        <Input ref={inputRef} onKeyDown={handlerKeyDown} className="text-white placeholder:ps-1" placeholder='Ditt...'>
+                        <Input ref={inputRef} onKeyDown={handlerKeyDown} className="w-56 md:w-96 text-white placeholder:ps-1" placeholder='Ditt...'>
                             <Text className="text-white" icon={<Keyboard size={16}/>} message="Pressione enter"/>
                         </Input>
                     </div>

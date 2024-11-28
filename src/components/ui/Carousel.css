@@ -30,7 +30,7 @@
 }
 @media (max-width: 600px) {
     .carousel {
-        transform: rotateX(0) rotateY(0) rotateZ(90deg) !important;
+        transform: rotateX(0) rotateY(0) rotateZ(90deg);
     }
     .carousel__card {
         width: 100px;

@@ -30,7 +30,7 @@ function PillType({ name, value }) {
     }
 
     return (
-        <div className="w-[160px] h-10 overflow-hidden relative rounded-3xl">
+        <div className="w-[120px] sm:w-[160px] h-10 overflow-hidden relative rounded-3xl">
             <div className="w-full absolute inset-0 bg-red-secondary"></div>
             <PillForeground className={`${value !== 1 ? colorClasses[name]: ""}`}/>
             <div className="px-4 absolute inset-0 grid grid-cols-2 items-center">

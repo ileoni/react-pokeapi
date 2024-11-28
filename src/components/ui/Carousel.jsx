@@ -61,9 +61,14 @@ function Carousel() {
 
     const checkPosition = (position) => position !== "afterbegin";
 
-    const handlerTransitionEnd = (carousel, position) => {
+    const handlerTransitionEnd = (carousel, position, isVertical) => {
         carousel.style.transition = "none";
-        carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(0deg)`;
+        
+        if(isVertical) {
+            carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(0deg)`;
+        } else {
+            carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(90deg)`;
+        }
 
         const [first, , last] = carousel.children;
         
@@ -71,15 +76,19 @@ function Carousel() {
         carousel.insertAdjacentElement(position, element);
     }
 
-    const animationStart = (carousel, angle, position) => {
+    const animationStart = (carousel, angle, position, isVertical) => {
         const adjustedAngle = checkPosition(position) ? angle * -1: angle;
         carousel.style.transition = "0.6s transform";
 
-        carousel.style.transform = `rotatex(0deg) rotatey(${adjustedAngle}deg) rotatez(0deg)`;
+        if(isVertical) {
+            carousel.style.transform = `rotatex(${adjustedAngle * -1}deg) rotatey(0deg) rotatez(90deg)`;
+        } else {
+            carousel.style.transform = `rotatex(0deg) rotatey(${adjustedAngle}deg) rotatez(0deg)`;
+        }
     } 
 
-    const onPrevious = (carousel, angle, position) => {
-        animationStart(carousel, angle, position);
+    const onPrevious = (carousel, angle, position, isVertical) => {
+        animationStart(carousel, angle, position, isVertical);
         
         carousel.addEventListener(
             "transitionend",
@@ -93,8 +102,8 @@ function Carousel() {
         );
     }
 
-    const onNext = (carousel, angle, position) => {
-        animationStart(carousel, angle, position);
+    const onNext = (carousel, angle, position, isVertical) => {
+        animationStart(carousel, angle, position, isVertical);
         
         carousel.addEventListener(
             "transitionend",
@@ -108,18 +117,24 @@ function Carousel() {
         );
     }
 
-    const determinateDirection = (e, value) => {
+    const determinateDirection = (e, value, isVertical) => {
         const carousel = carouselRef.current;
         const angle = 360 / carousel.children.length;
 
-        (value > 0) ? onPrevious(carousel, angle, "afterbegin"): onNext(carousel, angle, "beforeend");
+        if(value > 0) {
+            onPrevious(carousel, angle, "afterbegin", isVertical);
+        } else {
+            onNext(carousel, angle, "beforeend", isVertical);
+        }
     }
 
     const logMoveEvents = (e) => {
         const { isMoving, x, y } = state;
         if(isMoving) {
-            const coordenate = e.pageX - x;
-            determinateDirection(e, coordenate);
+            const media = window.matchMedia("(max-width: 600px)");
+            const coordenate = (media.matches) ? e.pageY - y: e.pageX - x;
+
+            determinateDirection(e, coordenate, media);
         }
     }
 
@@ -143,7 +158,7 @@ function Carousel() {
         <div className="wrapper-carousel">
             <div className="carousel__content relative">
                 {!loading && (
-                    <div className="absolute">
+                    <div className="md:absolute">
                         <div className="grid grid-flow-col auto-cols-min gap-2">
                             {evolutions[currentIndex]?.types().map((type, index) => <Pill key={index} type={type} />)}
                         </div>

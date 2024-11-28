@@ -29,7 +29,7 @@ function HeightChart() {
         <section className="bg-yellow-5000">
             <SpikesSVG className="fill-yellow-4000 scale-[-1]"/>
             <div className="p-8 lg:px-0 max-w-5xl mx-auto">
-                <h4 className="font-semibold text-center text-primary">Comparando evoluções</h4>
+                <h4 className="pb-4 font-semibold text-center text-primary">Comparando evoluções</h4>
                 <div className="grid grid-cols-1 md:grid-flow-col md:grid-cols-none md:auto-cols-min gap-8 place-content-center">
                     {!loading && data.evolutions().map((pokemon, index) => (
                         <div key={index} className="grid grid-flow-col auto-cols-max gap-8 justify-center">
