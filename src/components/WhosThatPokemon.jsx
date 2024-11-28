@@ -3,6 +3,7 @@ import { Keyboard } from "lucide-react";
 
 import SpikesSVG from "./ui/SpikesSVG";
 import { Input, Text } from "./ui/Input";
+import { mediaMatches } from "../utils";
 
 const KEY_ENTER = "Enter";
 
@@ -45,6 +46,7 @@ function WhosThatPokemon({ data, loading }) {
     }, [state])
 
     useEffect(() => {
+        console.log(mediaMatches())
         if(!loading) {
             const record = data.getRandomPokemon();
             setState(record);
@@ -63,9 +65,9 @@ function WhosThatPokemon({ data, loading }) {
                             <Text className="text-white" icon={<Keyboard size={16}/>} message="Pressione enter"/>
                         </Input>
                     </div>
-                    <div className='justify-self-end'>
+                    <div className='justify-self-center md:justify-self-end'>
                         {!loading && (
-                            <img src={state?.sprite()} alt={`pokemon ${state?.name()}`}  width={380} />
+                            <img src={state?.sprite()} alt={`pokemon ${state?.name()}`}  width={mediaMatches() ? 200: 380} />
                         )}
                     </div>
                 </div>

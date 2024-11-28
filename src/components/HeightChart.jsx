@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { usePokemon } from "../hooks/usePokemon";
 import SpikesSVG from "./ui/SpikesSVG";
 import Height from './ui/Height';
+import { mediaMatches } from '../utils/index';
 
 function HeightChart() {
     const { name } = useParams();
@@ -9,19 +10,19 @@ function HeightChart() {
 
     const state = [
         {
-            size: 60,
-            strokeWidth: 4,
-            fontSize: 16
+            size: mediaMatches() ? 100: 60,
+            strokeWidth: mediaMatches() ? 3: 4,
+            fontSize: mediaMatches() ? 20: 16
         },
         {
-            size: 120,
+            size: mediaMatches() ? 100: 120,
             strokeWidth: 3,
             fontSize: 20
         },
         {
-            size: 180,
-            strokeWidth: 2,
-            fontSize: 30
+            size: mediaMatches() ? 100: 180,
+            strokeWidth: mediaMatches() ? 3: 2,
+            fontSize: mediaMatches() ? 20: 30
         }
     ]
 
@@ -32,8 +33,8 @@ function HeightChart() {
                 <h4 className="pb-4 font-semibold text-center text-primary">Comparando evoluções</h4>
                 <div className="grid grid-cols-1 md:grid-flow-col md:grid-cols-none md:auto-cols-min gap-8 place-content-center">
                     {!loading && data.evolutions().map((pokemon, index) => (
-                        <div key={index} className="grid grid-flow-col auto-cols-max gap-8 justify-center">
-                            <div className="grid grid-flow-col auto-cols-max items-center">
+                        <div key={index} className="grid grid-flow-col auto-cols-max gap-4 justify-center">
+                            <div className="grid grid-flow-col auto-cols-fr items-center">
                                 <span className="font-cairo font-bold text-primary">{pokemon.height()}</span>
                                 <Height className="stroke-primary" height={state[index].size} strokeWidth={state[index].strokeWidth}/>
                             </div>

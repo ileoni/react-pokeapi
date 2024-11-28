@@ -15,7 +15,7 @@ function Home() {
             <Section>
                 <div className="grid md:grid-cols-2 items-center content-center">
                     <div>
-                        <h4 className='font-bold font-roboto text-center md:text-start'>
+                        <h4 className='md:font-bold font-roboto text-center md:text-start'>
                             Explore o Universo Pokémon
                         </h4>
                         <h1 className='font-bold font-cairo text-center md:text-start'>

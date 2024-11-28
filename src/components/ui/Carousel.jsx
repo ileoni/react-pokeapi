@@ -6,6 +6,7 @@ import { usePokemon } from "../../hooks/usePokemon";
 import { AppContext } from "../../contexts/app-context";
 import Pill from "./Pill";
 import PokeballSVG from "./PokeballSVG";
+import { mediaMatches } from "../../utils";
 
 const initialState = {
     isMoving: false,
@@ -61,13 +62,13 @@ function Carousel() {
 
     const checkPosition = (position) => position !== "afterbegin";
 
-    const handlerTransitionEnd = (carousel, position, isVertical) => {
+    const handlerTransitionEnd = (carousel, position) => {
         carousel.style.transition = "none";
         
-        if(isVertical) {
-            carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(0deg)`;
-        } else {
+        if(mediaMatches()) {
             carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(90deg)`;
+        } else {
+            carousel.style.transform = `rotatex(0deg) rotatey(0deg) rotatez(0deg)`;
         }
 
         const [first, , last] = carousel.children;
@@ -76,19 +77,19 @@ function Carousel() {
         carousel.insertAdjacentElement(position, element);
     }
 
-    const animationStart = (carousel, angle, position, isVertical) => {
+    const animationStart = (carousel, angle, position) => {
         const adjustedAngle = checkPosition(position) ? angle * -1: angle;
         carousel.style.transition = "0.6s transform";
 
-        if(isVertical) {
+        if(mediaMatches()) {
             carousel.style.transform = `rotatex(${adjustedAngle * -1}deg) rotatey(0deg) rotatez(90deg)`;
         } else {
             carousel.style.transform = `rotatex(0deg) rotatey(${adjustedAngle}deg) rotatez(0deg)`;
         }
     } 
 
-    const onPrevious = (carousel, angle, position, isVertical) => {
-        animationStart(carousel, angle, position, isVertical);
+    const onPrevious = (carousel, angle, position) => {
+        animationStart(carousel, angle, position);
         
         carousel.addEventListener(
             "transitionend",
@@ -102,8 +103,8 @@ function Carousel() {
         );
     }
 
-    const onNext = (carousel, angle, position, isVertical) => {
-        animationStart(carousel, angle, position, isVertical);
+    const onNext = (carousel, angle, position) => {
+        animationStart(carousel, angle, position);
         
         carousel.addEventListener(
             "transitionend",
@@ -117,24 +118,22 @@ function Carousel() {
         );
     }
 
-    const determinateDirection = (e, value, isVertical) => {
+    const determinateDirection = (e, value) => {
         const carousel = carouselRef.current;
         const angle = 360 / carousel.children.length;
 
         if(value > 0) {
-            onPrevious(carousel, angle, "afterbegin", isVertical);
+            onPrevious(carousel, angle, "afterbegin");
         } else {
-            onNext(carousel, angle, "beforeend", isVertical);
+            onNext(carousel, angle, "beforeend");
         }
     }
 
     const logMoveEvents = (e) => {
         const { isMoving, x, y } = state;
         if(isMoving) {
-            const media = window.matchMedia("(max-width: 600px)");
-            const coordenate = (media.matches) ? e.pageY - y: e.pageX - x;
-
-            determinateDirection(e, coordenate, media);
+            const coordenate = mediaMatches() ? e.pageY - y: e.pageX - x;
+            determinateDirection(e, coordenate);
         }
     }
 

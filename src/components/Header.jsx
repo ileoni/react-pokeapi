@@ -7,7 +7,7 @@ function Header(params) {
     return (
         <div className="w-full h-20 bg-yellow-6000 shadow">
             <div className="px-8 lg:px-0 max-w-5xl w-full h-full mx-auto grid grid-cols-[1fr_auto] items-baseline content-center">
-                <Link to="/">
+                <Link to="/" className="justify-self-center md:justify-self-start">
                     <LogoSVG className="fill-red-primary" />
                 </Link>
                 <nav>
