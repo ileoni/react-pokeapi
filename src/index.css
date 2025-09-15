@@ -1,97 +1,71 @@
-@import "./assets/css/pokemon-color.css";
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-yellow-first: #FCF300;
-  --bg-yellow-second: #FCF529;
-  --bg-yellow-third: #FDF752;
-  --bg-yellow-fourth: #FDF97A;
-  --bg-yellow-fifth: #FEFBA3;
-  --bg-yellow-sixth: #FEFDCC;
+  --color-base-600: #FCF300;
+  --color-base-500: #FCF529;
+  --color-base-400: #FDF752;
+  --color-base-300: #FDF97A;
+  --color-base-200: #FEFBA3;
+  --color-base-100: #FEFDCC;
+
+  --color-primary-100: #FCF300;
+  --color-primary-200: #5EB8E6;
+  --color-primary-300: #ED4051;
+
+  --color-secondary-100: #212529;
+  --color-secondary-200: #EAEAEA;
+  --color-secondary-300: #893168;
+
+  --color-normal: #E7E6F7;
+  --color-fire: #DC2F02;
+  --color-grass: #2B9348;
+  --color-flying: #CAF0F8;
+  --color-fighting: #9D0208;
+  --color-poison: #7B2CBF;
+  --color-electric: #FFC300;
+  --color-ground: #7F4F24;
+  --color-rock: #A68A64;
+  --color-psychic: #FF4D6D;
+  --color-ice: #48CAE4;
+  --color-bug: #80B918;
+  --color-ghost: #560BAD;
+  --color-steel: #E3D0D8;
+  --color-dragon: #212529;
+  --color-dark: #3C096C;
+  --color-fairy: #FFB3C1;
+  --color-water: #00B4D8;
   
-  --blue-second:  #5EB8E6;
-  --red-third: #ED4051;
-  
-  --primary: #212529;
-  --secondary: #495057;
-  --tertiary: #e9ecef;
-
-  --montserrat: 'Roboto', sans-serif;
-  --roboto: 'Roboto', sans-serif;
-  --cairo: 'Cairo', sans-serif;
-
-  background-color: var(--bg-yellow-first);
-  color: var(--primary);
-
-  --card-gradient: linear-gradient(to bottom, transparent, #FEFDCC);
-  --card-box-shadow: 0px 16px 16px -8px #00000040;
-
-  --home-gradient: linear-gradient(60deg, #FCF300 30%, transparent 100%);
-  /* details-gradient - FDF752AA */
-  --details-gradient: linear-gradient(180deg, #464516aa, 40%, transparent 100%);
-  --loading-gradient: linear-gradient(60deg, white 10%, transparent 100%);
-
-  --glow-up-gradient: linear-gradient(160deg, #ffffffd9 4%, transparent 50%);
+  --background-color: var(--color-base-600);
+  --text-color: var(--color-secondary-100);
+  --text-family: "Cairo", sans-serif;
 }
 
-.dash { border: 1px dashed; }
+* ::-webkit-scrollbar {
+  width: 4px;
+  appearance: none;
+}
 
-* {
-  box-sizing: border-box;
-  font-family: var(--roboto);
+* ::-webkit-scrollbar-track {
+  background-color: var(--color-base-100);
+}
+* ::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-300);
 }
 
 body {
-  scroll-behavior: smooth;
-  margin: 0;
+  letter-spacing: 2px;
+  font-family: var(--text-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-body::-webkit-scrollbar {
-  width: 8px;
-  background-color: var(--bg-yellow-sixth);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--red-third);
-}
-
-input {
-  border: none;
-  outline: none;
-  background: none;
-}
-
-button {
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-ul {
-  list-style: none;
-}
-
-@keyframes shake {
-  0% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(8px);
-  }
-  50% {
-    transform: translateY(0px);
-  }
-  75% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+[data-normal],
+[data-flying],
+[data-steel],
+[data-fairy] {
+  color: var(--color-secondary-100);
 }

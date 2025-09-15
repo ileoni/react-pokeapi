@@ -1,0 +1,10 @@
+export const KEY_ENTER = "Enter";
+export const LIMIT = 12;
+export const MAX_LENGTH = 151;
+export const START = 0;
+export const EN = 'en';
+export const STATUS_HP = 'hp';
+export const DEFAULT_DAMAGE = 1;
+export const NO_DAMAGE = 0;
+export const HALF_DAMAGE = 0.5;
+export const DOUBLE_DAMAGE = 2;

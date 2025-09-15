@@ -1,80 +1,56 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Keyboard } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-import SpikesSVG from "./ui/SpikesSVG";
-import { Input, Text } from "./ui/Input";
-import { mediaMatches } from "../utils";
+import { useApiPokemon } from "../hooks/useApiPokemon";
+import { Text, TextWithRef } from "./Text";
+import { KEY_ENTER } from "../constants";
 
-const KEY_ENTER = "Enter";
-
-function WhosThatPokemon({ data, loading }) {
-    const [state, setState] = useState();
+function WhosThatPokemon() {
     const inputRef = useRef(null);
 
-    const cleanup = () => inputRef.current.value = "";
+    const [pokemon, setPokemon] = useState();
 
-    const cleaningAnimation = (element) => {
-        element.style.animation = "none";
-        element.classList.remove('bg-input-error');
-    }
-    
-    const onAnimationEndOnce = (element, callback) => {
-        element.addEventListener("animationend", () => callback(element), { once: true })
-    }
+    const { getRandomPokemon, sameName, state } = useApiPokemon();
 
-    const onShake = () => {
-        const element = inputRef.current;
+    useEffect(() => {
+        const record = getRandomPokemon();
+        setPokemon(record);
+    }, [state])
 
-        element.style.animation = "shake 300ms";
-        element.classList.add('bg-input-error');
-        onAnimationEndOnce(element, cleaningAnimation);
+    const cleanup = () => {
+        inputRef.current.value = "";
     }
     
     const correctAnswer = () => {
-        const record = data.getRandomPokemon(state.id());
-        setState(record);
+        const record = getRandomPokemon();
+        setPokemon(record);
         cleanup();
     }
 
-    const checkName = (value) => state.sameAsName(value) ? correctAnswer(): onShake();
+    const cheking = (id, name) => {
+        sameName(id, name) ? correctAnswer(): null;
+    }
 
-    const handlerKeyDown = useCallback((e) => {
+    const handleKeyDown = (e) => {
         if(e.key === KEY_ENTER) {
-            const { value } = inputRef.current;
-            checkName(String(value).toLocaleLowerCase());
+            const id = pokemon.id;
+            const name = inputRef.current.value;
+            cheking(id, name);
         }
-    }, [state])
-
-    useEffect(() => {
-        console.log(mediaMatches())
-        if(!loading) {
-            const record = data.getRandomPokemon();
-            setState(record);
-        }
-    }, [loading])
+    }
 
     return (
-        <section className="bg-image-with-gradient bg-no-repeat bg-cover">
-            <SpikesSVG className="w-full fill-yellow-6000 scale-[-1] translate-y-[-4px]" />
-            <div className='my-8 px-8 lg:px-0 max-w-5xl mx-auto'>
-                <div className="grid md:grid-cols-2 items-center content-center">
-                    <div>
-                        <h4 className='font-roboto text-white'>Quem é esse</h4>
-                        <h1 className='font-cairo text-white'>Pokemon?</h1>
-                        <Input ref={inputRef} onKeyDown={handlerKeyDown} className="w-56 md:w-96 text-white placeholder:ps-1" placeholder='Ditt...'>
-                            <Text className="text-white" icon={<Keyboard size={16}/>} message="Pressione enter"/>
-                        </Input>
-                    </div>
-                    <div className='justify-self-center md:justify-self-end'>
-                        {!loading && (
-                            <img src={state?.sprite()} alt={`pokemon ${state?.name()}`}  width={mediaMatches() ? 200: 380} />
-                        )}
-                    </div>
-                </div>
+        <>
+            <TextWithRef
+                ref={inputRef}
+                label="Quem é esse pokémon?"
+                className="text-secondary-200"
+                onKeyDown={handleKeyDown}
+            />
+            <div className="py-8 sm:py-0 justify-self-center sm:justify-self-end">
+                {pokemon && <img src={pokemon.sprite} alt="pikachu" className="w-56 sm:w-72"/>}
             </div>
-            <SpikesSVG className="w-full fill-yellow-2000 translate-y-[4px]" />
-        </section>
-    );
+        </>
+    )
 }
 
 export default WhosThatPokemon;

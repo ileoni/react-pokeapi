@@ -1,66 +1,60 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 
-import { usePokemons, MAX_LENGTH, LIMIT } from '../hooks/usePokemons';
-import Section from "./ui/Section";
-import Card from "./ui/Card";
-import { InfiniteScroll } from "./ui/InfiniteScroll";
-import { AppContext } from "../contexts/app-context";
+import { TextWithRef } from "./Text";
+import { useApiPokemon } from "../hooks/useApiPokemon";
+import Card from "./Card";
+import Pokeball from '../components/Pokeball';
+import InfiniteScroll from "./InfiniteScroll";
 
+function Pokedex() {
+    const inputRef = useRef(null);
 
-function Pokedex(props) {
-    const { data, loading, fetchMore } = usePokemons();
-    const { heFinished, setHeFinished } = useContext(AppContext);
+    const [pokemons, setPokemons] = useState([]);
 
-    const [currentLength, setCurrentLength] = useState(0);
-
+    const { state, all, filterPokemons, reachedMaximumLength, updateFetch } = useApiPokemon();
+    
     useEffect(() => {
-        if(currentLength >= 151) setHeFinished(false);
-
-        if(currentLength > 0 && currentLength < 151) {
-            const sum = currentLength + LIMIT;
-            const limit = sum >= MAX_LENGTH ? MAX_LENGTH - currentLength: LIMIT;
-            fetchMore({
-                variables: {
-                    limit, offset: currentLength
-                },
-                updateQuery(previousResult, { fetchMoreResult }) {
-                    return {
-                        pokeapi: {
-                            pokemons: [
-                                ...previousResult.pokeapi.pokemons,
-                                ...fetchMoreResult.pokeapi.pokemons,
-                            ]
-                        }
-                    }
-                }
-            })
-        }
-    }, [currentLength])
-
-    const handlerIntersectionObserver = ([entry]) => {
-        if(entry.intersectionRatio) {
-            const newLength = data.all().length;
-            setCurrentLength(newLength);
-        }
+        const pokemons = all()
+        setPokemons(pokemons);
+    }, [state]);
+    
+    const handleChange = () => {
+        const pokemons = filterPokemons(inputRef.current.value);
+        setPokemons(pokemons);
     }
 
     return (
-        <Section className="py-8 bg-yellow-2000">
-            <InfiniteScroll
-                heFinished={heFinished}
-                intersectionObserverCallback={handlerIntersectionObserver}
-            >
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {!loading && data.all().map((item, index) => (
-                        <Link key={index} to={`pokemon/${item.name()}`}>
-                            <Card data={item}/>
-                        </Link>
-                    ))}
-                </div>
-            </InfiniteScroll>
-        </Section>
-    );
+        <>
+            <TextWithRef
+                ref={inputRef}
+                label="Buscar pokemon?"
+                className="text-secondary-100"
+                onChange={handleChange}
+            />
+            <div className="pt-8">
+                <InfiniteScroll 
+                    intersectionObserverCallback={updateFetch}
+                    reachedMaximumLength={reachedMaximumLength}
+                >
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        {pokemons && pokemons.map((pokemon, index) => (
+                            <Card key={index}>
+                                <NavLink to={`pokemon/${pokemon.name}`}>
+                                    <img src={pokemon.sprite} alt={pokemon.name} />
+                                    <div className="grid grid-cols-[1fr_auto] text-primary-300">
+                                        <span className="row-state-1 capitalize font-bold text-xs sm:text-sm text-16">{pokemon.name}</span>
+                                        <span className="row-start-2 text-xs text-16">Nº {pokemon.number}</span>
+                                        <Pokeball className="row-span-2 w-4 sm:w-8 h-full fill-primary-300"/>
+                                    </div>
+                                </NavLink>
+                            </Card>
+                        ))}         
+                    </div>
+                </InfiniteScroll>
+            </div>
+        </>
+    )
 }
 
 export default Pokedex;
