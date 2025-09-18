@@ -8,3 +8,4 @@ export const DEFAULT_DAMAGE = 1;
 export const NO_DAMAGE = 0;
 export const HALF_DAMAGE = 0.5;
 export const DOUBLE_DAMAGE = 2;
+export const FULL_ANGLE = 360;

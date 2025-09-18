@@ -33,7 +33,7 @@ function WhosThatPokemon() {
     const handleKeyDown = (e) => {
         if(e.key === KEY_ENTER) {
             const id = pokemon.id;
-            const name = inputRef.current.value;
+            const name = String(inputRef.current.value).toLowerCase();
             cheking(id, name);
         }
     }

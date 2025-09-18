@@ -1,12 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
+import { ApolloProvider } from "@apollo/client";
 
 import { client } from "./configs/apollo-client";
-import { ApolloProvider } from "@apollo/client";
 
 function App() {
     return (
         <ApolloProvider client={client}>
             <Outlet />
+            <ScrollRestoration/>
         </ApolloProvider>
     );
 }

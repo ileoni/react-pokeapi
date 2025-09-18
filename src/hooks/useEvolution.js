@@ -24,7 +24,12 @@ export const useEvolution = (data) => {
 
     const sanitizedData = (data) => {
         const weight = data.weight / 10;
-        const height = data.height / 10;
+        const height = {
+            cm: data.height * 10,
+            m: data.height / 10
+        }
+        const heightCM = data.height * 10;
+        const heightM = data.height / 10;
         const percentageOfEachHeight = Math.floor((data.height / last.height) * 100)
         const adjustedTypes = data.types.flatMap(({type}) => ({ name: type.name }));
 
@@ -35,7 +40,7 @@ export const useEvolution = (data) => {
             sprite: data.sprites.other['official-artwork'].front_default,
             weight: `${weight} KG`,
             height: {
-                value: (height < 1) ? `${data.height} cm`: `${height} M`,
+                value: (heightM < 1) ? `${heightCM} cm`: `${heightM} M`,
                 percentageOfEachHeight
             },
             types: adjustedTypes

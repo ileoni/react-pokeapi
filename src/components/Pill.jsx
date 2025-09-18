@@ -1,7 +1,17 @@
-export const Pill = ({ className, type }) => {
-    const props = {
-        [`data-${type}`]: ""
-    }
+import { useConfigs } from "../hooks/useConfigs"
 
-    return <span {...props} className={`py-1 px-5 bg-${type} uppercase font-bold text-xs text-center text-white rounded-lg ${className}`}>{ type }</span>
+export const Pill = ({ className, type }) => {
+    return (
+        <span
+            {...{
+                [`data-${type}`]: "",
+                style: {
+                    background: `var(--color-${type})`
+                }
+            }}
+            className={`py-1 px-5 uppercase font-bold text-xs text-center text-white rounded-lg ${className}`}
+        >
+            { useConfigs(`types.${type}.value`) }
+        </span>
+    )
 }

@@ -12,8 +12,8 @@ function Home() {
                 <Row.MaxW5xl className="min-h-fit py-10 grid sm:grid-cols-2 items-center">
                     <img src={Pikachu} alt="pikachu" className="justify-self-center sm:justify-self-start row-start-2 sm:row-start-auto w-56 sm:w-96 -scale-x-100"/>
                     <div>
-                        <H4 className="font-bold text-center sm:text-left">Explore o Universo Pokémon</H4>
-                        <H1 className="font-bold text-center sm:text-left">com nossa <span className='text-primary-300'>Pokédex</span></H1>
+                        <H4 className="text-center sm:text-left">Explore o Universo Pokémon</H4>
+                        <H1 className="text-center sm:text-left">com nossa <span className='text-primary-300'>Pokédex</span></H1>
                     </div>
                 </Row.MaxW5xl>
             </Row>
@@ -25,7 +25,7 @@ function Home() {
                 <Row.SpikesBottom className="fill-base-400"/>
             </Row.Background>
             <Row className="bg-base-400">
-                <Row.MaxW5xl className="min-h-screen">
+                <Row.MaxW5xl className="min-h-screen pb-0">
                     <Pokedex />
                 </Row.MaxW5xl>
             </Row>

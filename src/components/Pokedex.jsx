@@ -20,7 +20,8 @@ function Pokedex() {
     }, [state]);
     
     const handleChange = () => {
-        const pokemons = filterPokemons(inputRef.current.value);
+        const name = String(inputRef.current.value).toLowerCase();
+        const pokemons = filterPokemons(name);
         setPokemons(pokemons);
     }
 

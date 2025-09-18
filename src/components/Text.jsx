@@ -42,7 +42,7 @@ export const TextWithRef = forwardRef((props, ref) => {
         <div className={`grid gap-4 ${className ?? ""}`}>
             <label htmlFor={id}>{label}</label>
             <div className="relative">
-                <input ref={ref} {...props} type="text" className="w-full bg-transparent outline-none tracking-[6px]" onChange={onchange}/>
+                <input ref={ref} {...props} enterKeyHint="send" type="text" className="w-full bg-transparent outline-none tracking-[6px]" onChange={onchange}/>
                 <div className="absolute h-0 grid grid-cols-[auto_1fr]">
                     <span className="h-0 leading-[0]">{length ? Array(length).fill('_').map(underline => underline): ""}</span><span className="h-0 leading-3 animate-pulse">_</span>
                 </div>
