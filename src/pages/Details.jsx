@@ -11,21 +11,18 @@ import Status from "../components/Status";
 import TypesOfWeakness from "../components/TypesOfWeakness";
 import Evolutions from "../components/Evolutions";
 import EvolutionChain from "../components/EvolutionChain";
-import { useTranslate } from "../hooks/useTranslate";
 
 function Details() {
     const { name } = useParams();
     
-    const { state, getPokemon } = usePokemon(name);
+    const { getPokemon } = usePokemon({ name });
 
     const [pokemon, setPokemon] = useState();
-
-    useTranslate();
 
     useEffect(() => {
         const pokemon = getPokemon();
         setPokemon(pokemon);
-    }, [state])
+    }, [getPokemon])
 
     return (
         <>
@@ -62,13 +59,13 @@ function Details() {
             <Row.SpikesTop className="fill-base-400"/>
             <Row.MaxW5xl>
                 <H4 className="text-center sm:text-left">Evoluções - Peso e Altura</H4>
-                <Evolutions evolution={pokemon?.evolution} self={pokemon} />
+                <Evolutions evolution={pokemon?.evolutions} self={pokemon} />
             </Row.MaxW5xl>
         </Row>
         <Row.Background>
             <Row.SpikesTop className="fill-base-300"/>
             <Row.MaxW5xl>
-                <EvolutionChain data={pokemon?.evolutionsOrderedByPriorities}/>
+                <EvolutionChain data={pokemon?.evolutions}/>
             </Row.MaxW5xl>
         </Row.Background>
         </>

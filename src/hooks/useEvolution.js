@@ -26,7 +26,7 @@ export const useEvolution = (data) => {
         const weight = data.weight / 10;
         const height = {
             cm: data.height * 10,
-            m: data.height / 10
+            m:data.height / 10
         }
         const heightCM = data.height * 10;
         const heightM = data.height / 10;

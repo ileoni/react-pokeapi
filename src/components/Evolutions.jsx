@@ -5,7 +5,7 @@ const Card = ({ data, self }) => {
 
     const props = {
         style: {
-            height: `${data.height.percentageOfEachHeight}%`
+            height: `${data.height.size}%`
         }
     }
 

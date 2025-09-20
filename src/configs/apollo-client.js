@@ -6,6 +6,10 @@ const baseUrl = "https://pokeapi.co/api/v2/";
 const restlink = new RestLink({
     uri: baseUrl,
     typePatcher: {
+        Pokemon: (data) => {
+            const { types, ...rest } = data;
+            return { ...data, type: { types }}
+        },
         Species: (data) => {
             if(data != null) {
                 const [id] = String(data.evolution_chain.url).split("/").slice(-2, -1);

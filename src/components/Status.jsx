@@ -3,15 +3,13 @@ import { Bar } from "./Bar";
 import Radar from "./Radar";
 
 function Status({ stats }) {
-    const expressionOfBase = ({base, max}) => (base / max) * 100;
-
     return (
         <div className="grid sm:grid-cols-2 gap-4">
             <div className="grid gap-4">
                 {stats && stats.map((stat, index) => (
                     <Bar
                         key={index}
-                        barPercentage={expressionOfBase(stat)}
+                        barPercentage={stat.bar}
                         base={stat.base}
                         max={stat.max}
                         min={stat.min}

@@ -9,3 +9,16 @@ export const NO_DAMAGE = 0;
 export const HALF_DAMAGE = 0.5;
 export const DOUBLE_DAMAGE = 2;
 export const FULL_ANGLE = 360;
+
+export const STATUS = {
+    HP: "hp",
+    MIN_IV: 0,
+    MIN_EV: 0,
+    MAX_IV: 31,
+    MAX_EV: 252,
+    MAX_LEVEL: 100,
+    NATURE: {
+        BAD: 0.9,
+        GOOD: 1.1
+    }
+}
