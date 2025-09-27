@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client"
-import { GET_POKEMON } from "../configs/queries";
+import query from "../configs/queries";
 import { useCallback, useEffect, useState } from "react";
 import { useStatus } from "./useStatus";
 import { useSpecies } from "./useSpecies";
@@ -8,7 +8,7 @@ import { useType } from "./useType";
 export const usePokemon = ({ name }) => {
     const [state, setState] = useState(null);
 
-    const { data, loading } = useQuery(GET_POKEMON, { variables: { name } });
+    const { data, loading } = useQuery(query.GET_POKEMON, { variables: { name } });
 
     useEffect(() => {
         if(!loading) setState(data.pokeapi);
@@ -39,6 +39,7 @@ export const usePokemon = ({ name }) => {
     const getPokemon = useCallback(() => sanitizeData(state), [state]);
 
     return {
+        loading,
         getPokemon
     }
 }

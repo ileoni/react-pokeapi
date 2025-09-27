@@ -15,7 +15,7 @@ import EvolutionChain from "../components/EvolutionChain";
 function Details() {
     const { name } = useParams();
     
-    const { getPokemon } = usePokemon({ name });
+    const { getPokemon, loading } = usePokemon({ name });
 
     const [pokemon, setPokemon] = useState();
 

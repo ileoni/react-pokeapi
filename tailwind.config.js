@@ -58,7 +58,7 @@ export default {
       backgroundImage: {
         'image-with-gradient': `
           linear-gradient(to right, #000D, #000A, #fff5),
-          url('./assets/whos-that-pokemon.png')
+          url('./assets/whos-that-pokemon.webp')
         `
       },
     }

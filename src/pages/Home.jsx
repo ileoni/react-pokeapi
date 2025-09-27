@@ -1,7 +1,7 @@
 import { H1 } from "../components/H1";
 import { H4 } from "../components/H4";
 import Row from "../components/Row";
-import Pikachu from "../assets/pikachu.png";
+import Pikachu from "../assets/pikachu.webp";
 import WhosThatPokemon from "../components/WhosThatPokemon";
 import Pokedex from "../components/Pokedex";
 
@@ -10,7 +10,7 @@ function Home() {
         <>
             <Row>
                 <Row.MaxW5xl className="min-h-fit py-10 grid sm:grid-cols-2 items-center">
-                    <img src={Pikachu} alt="pikachu" className="justify-self-center sm:justify-self-start row-start-2 sm:row-start-auto w-56 sm:w-96 -scale-x-100"/>
+                    <img src={Pikachu} alt="pikachu" className="justify-self-center sm:justify-self-start row-start-2 sm:row-start-auto w-56 sm:w-96"/>
                     <div>
                         <H4 className="text-center sm:text-left">Explore o Universo Pokémon</H4>
                         <H1 className="text-center sm:text-left">com nossa <span className='text-primary-300'>Pokédex</span></H1>

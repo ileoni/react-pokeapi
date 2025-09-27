@@ -42,7 +42,7 @@ function Pokedex() {
                         {pokemons && pokemons.map((pokemon, index) => (
                             <Card key={index}>
                                 <NavLink to={`pokemon/${pokemon.name}`}>
-                                    <img src={pokemon.sprite} alt={pokemon.name} />
+                                    <img loading="lazy" src={pokemon.sprite} alt={pokemon.name} />
                                     <div className="grid grid-cols-[1fr_auto] text-primary-300">
                                         <span className="row-state-1 capitalize font-bold text-xs sm:text-sm text-16">{pokemon.name}</span>
                                         <span className="row-start-2 text-xs text-16">Nº {pokemon.number}</span>

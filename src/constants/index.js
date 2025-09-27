@@ -1,3 +1,4 @@
+export const BASE_URL = "https://pokeapi.co/api/v2/";
 export const KEY_ENTER = "Enter";
 export const LIMIT = 12;
 export const MAX_LENGTH = 151;

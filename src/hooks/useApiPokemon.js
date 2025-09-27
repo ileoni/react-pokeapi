@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useQuery } from "@apollo/client";
 
 import { LIMIT, MAX_LENGTH, START } from "../constants";
-import { GET_POKEMONS } from "../queries";
+import query from "../configs/queries";
 
 export const useApiPokemon = (props) => {
     const [initialState, setInitialState] = useState();
@@ -13,7 +13,7 @@ export const useApiPokemon = (props) => {
         variables: { limit: LIMIT, offset: START }
     }
 
-    const { data, loading, fetchMore } = useQuery(GET_POKEMONS, configs);
+    const { data, loading, fetchMore } = useQuery(query.GET_POKEMONS, configs);
 
     useEffect(() => {
         if(data) {

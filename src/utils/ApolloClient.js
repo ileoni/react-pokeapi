@@ -1,10 +1,10 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { RestLink } from "apollo-link-rest";
 
-const baseUrl = "https://pokeapi.co/api/v2/";
+import { BASE_URL } from "../constants";
 
 const restlink = new RestLink({
-    uri: baseUrl,
+    uri: BASE_URL,
     typePatcher: {
         Pokemon: (data) => {
             const { types, ...rest } = data;

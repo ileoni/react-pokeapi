@@ -5,7 +5,7 @@ export default {
     },
     attack: {
         value: "Ataque",
-        acronym: "ATK"
+        acronym: "ATQ"
     },
     defense: {
         value: "Defesa",
@@ -13,14 +13,14 @@ export default {
     },
     'special-attack': {
         value: "Ataque Especial",
-        acronym: "ESP-ATK"
+        acronym: "ATQ-ESP"
     },
     'special-defense': {
         value: "Defesa Especial",
-        acronym: "ESP-DEF"
+        acronym: "DEF-ESP"
     },
     speed: {
         value: "Ataque",
-        acronym: "Vel"
+        acronym: "VEL"
     },
 }
