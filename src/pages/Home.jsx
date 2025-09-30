@@ -1,11 +1,18 @@
+import { ScrollRestoration } from "react-router-dom";
+
 import { H1 } from "../components/H1";
 import { H4 } from "../components/H4";
+import { Loading } from "../components/Loading";
+import { usePokeapi } from "../hooks/usePokeapi";
 import Row from "../components/Row";
 import Pikachu from "../assets/pikachu.webp";
-import WhosThatPokemon from "../components/WhosThatPokemon";
 import Pokedex from "../components/Pokedex";
+import WhosThatPokemon from "../components/WhosThatPokemon";
 
 function Home() {
+    const { pokemons } = usePokeapi();
+    const { loading } = pokemons;
+
     return (
         <>
             <Row>
@@ -19,16 +26,23 @@ function Home() {
             </Row>
             <Row.Background>
                 <Row.SpikesTop className="fill-base-600"/>
-                <Row.MaxW5xl className="grid sm:grid-flow-col sm:justify-between items-center">
-                    <WhosThatPokemon />
+                <Row.MaxW5xl className="">
+                    <Loading loading={loading}>
+                        <div className="min-h-96 grid sm:grid-flow-col sm:justify-between items-center">
+                            <WhosThatPokemon />
+                        </div>
+                    </Loading>
                 </Row.MaxW5xl>
                 <Row.SpikesBottom className="fill-base-400"/>
             </Row.Background>
             <Row className="bg-base-400">
-                <Row.MaxW5xl className="min-h-screen pb-0">
-                    <Pokedex />
+                <Row.MaxW5xl className="">
+                    <Loading loading={loading}>
+                        <Pokedex />
+                    </Loading>
                 </Row.MaxW5xl>
             </Row>
+            <ScrollRestoration/>
         </>
     )
 }

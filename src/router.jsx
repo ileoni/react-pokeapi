@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import App from "./App";
-import AppLayout from "./layouts/AppLayout";
 import Home from "./pages/Home";
 import Details from './pages/Details';
+import AppLayout from "./layouts/AppLayout";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
                         Component: Home
                     },
                     {
-                        path: 'pokemon/:name',
+                        path: "pokemon/:name",
                         Component: Details
                     }
                 ]

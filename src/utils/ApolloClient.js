@@ -6,21 +6,42 @@ import { BASE_URL } from "../constants";
 const restlink = new RestLink({
     uri: BASE_URL,
     typePatcher: {
-        Pokemon: (data) => {
-            const { types, ...rest } = data;
+        Record: (data) => {
+            const { types } = data;
             return { ...data, type: { types }}
         },
         Species: (data) => {
-            if(data != null) {
-                const [id] = String(data.evolution_chain.url).split("/").slice(-2, -1);
-                data.evolution_chain.id = id;
-            }
-            return data;
+            const [ endpoint ] = data.evolution_chain.url.split("/v2/").slice(-1);
+            return { ...data, evolution_chain: { endpoint } };
         }
-    },
+    }
 });
 
 export const client = new ApolloClient({
     link: restlink,
-    cache: new InMemoryCache()
+    cache: new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    recordList: {
+                        keyArgs: false,
+                        merge(existing = {}, incoming = {}) {
+                            return {
+                                ...incoming,
+                                records: [
+                                    ...(existing.records || []),
+                                    ...(incoming.records || [])
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            Records: { keyFields: ["name"] },
+            Record: { keyFields: ["name"] },
+            Species: { keyFields: ["name"] },
+            EvolutionChain: { keyFields: ["id"] },
+            All: { keyFields: false }
+        }
+    })
 });

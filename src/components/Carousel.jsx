@@ -16,7 +16,7 @@ function Carousel() {
         handleTouchStart,
     } = useEvolutionChain();
 
-    const rotateAxis = axis === "horizontal" ? "rotatey": "rotatex";
+    // const rotateAxis = axis === "horizontal" ? "rotatey": "rotatex";
 
     return (
         <div
@@ -48,8 +48,10 @@ function Carousel() {
                         className="w-full h-full grid place-items-center absolute inset-0 m-auto"
                         draggable={false}
                         style={{
+                            width: `${pokemon.height.size}%`,
                             backfaceVisibility: axis === "vertical" ? "hidden": "visible",
-                            transform: `${rotateAxis}(${(FULL_ANGLE / records.length) * index}deg) translatez(${axis === "vertical" ? "100": "200"}px) scale(${axis === "vertical" ? "50": "70"}%)`,
+                            // transform: `${rotateAxis}(${(FULL_ANGLE / records.length) * index}deg) translatez(${axis === "vertical" ? "100": "200"}px) scale(${axis === "vertical" ? "50": "70"}%)`,
+                            transform: `rotatey(${(FULL_ANGLE / records.length) * index}deg) translatez(100px) scale(${axis === "vertical" ? "50": "70"}%)`,
                             transformStyle: "preserve-3d",
                             userSelect: "none"
                         }}

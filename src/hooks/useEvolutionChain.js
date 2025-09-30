@@ -26,7 +26,11 @@ export const useEvolutionChain = () => {
 
     const calculateCurrentIndex = (angle) => {
         if (length === 0) return 0;
-        return (Math.abs(angle) / (FULL_ANGLE / length)) % length;
+        const angleIsGreaterThenZero = angle > 0;
+        let restOfTheAngle = (Math.abs(angle) / (FULL_ANGLE / length)) % length;
+        const restOfTheAngleIsEqualToZero = restOfTheAngle === 0;
+        if(angleIsGreaterThenZero) restOfTheAngle = restOfTheAngleIsEqualToZero ? 0: data.length - restOfTheAngle;
+        return restOfTheAngle;
     };
 
     const cleanUp = () => {
@@ -43,9 +47,9 @@ export const useEvolutionChain = () => {
     }
 
     const updateCarousel = () => {
-        const rotateAxis = axis === "horizontal" ? "rotatey": "rotatex";
-        const angleAxis = axis === "horizontal" ? angleRef.current: angleRef.current * -1;
-        carouselTrackRef.current.style.transform = `${rotateAxis}(${angleAxis}deg)`;
+        // const rotateAxis = axis === "horizontal" ? "rotatey": "rotatex";
+        // const angleAxis = axis === "horizontal" ? angleRef.current: angleRef.current * -1;
+        carouselTrackRef.current.style.transform = `rotatey(${angleRef.current}deg)`;
     }
 
     const handleMouseDown = ({ pageX, pageY }) => {
@@ -61,7 +65,8 @@ export const useEvolutionChain = () => {
     const handleMouseMove = ({ pageX, pageY }) => {
         if(!isdraggingRef.current) return;
 
-        let delta = axis === "horizontal" ? pageX - startXRef.current : pageY - startYRef.current;
+        // let delta = axis === "horizontal" ? pageX - startXRef.current : pageY - startYRef.current;
+        let delta = pageX - startXRef.current;
         angleRef.current += delta * 0.3;
 
         updateCarousel();
@@ -83,7 +88,8 @@ export const useEvolutionChain = () => {
         const [ touch ] = changedTouches;
         const { pageX, pageY } = touch;
 
-        let delta = axis === "horizontal" ? pageX - startXRef.current : pageY - startYRef.current;
+        // let delta = axis === "horizontal" ? pageX - startXRef.current : pageY - startYRef.current;
+        let delta = pageX - startXRef.current;
         angleRef.current += delta * 0.3;
 
         updateCarousel();

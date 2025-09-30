@@ -13,7 +13,7 @@ export const useType = ({ data }) => {
         return records;
     }
 
-    const sanitizeDamageRelations = (data) => {        
+    const sanitizeDamageRelations = (data) => {
         const doubleDamage = data?.types?.flatMap(({type}) => type.damageRelations.damage_relations.double_damage_from);
         const halfDamage = data?.types?.flatMap(({type}) => type.damageRelations.damage_relations.half_damage_from);
         const noDamage = data?.types?.flatMap(({type}) => type.damageRelations.damage_relations.no_damage_from);

@@ -1,28 +1,28 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { useApiPokemon } from "../hooks/useApiPokemon";
-import { Text, TextWithRef } from "./Text";
-import { KEY_ENTER } from "../constants";
+import { usePokeapi } from "../hooks/usePokeapi";
+import { TextWithRef } from "./Text";
+import { Loading } from "./Loading";
 
 function WhosThatPokemon() {
     const inputRef = useRef(null);
 
-    const [pokemon, setPokemon] = useState();
+    const [data, setData] = useState();
 
-    const { getRandomPokemon, sameName, state } = useApiPokemon();
-
+    const { pokemons } = usePokeapi();
+    const { getRandomPokemon, sameName, state } = pokemons;
+    
     useEffect(() => {
         const record = getRandomPokemon();
-        setPokemon(record);
+        setData(record);
     }, [state])
 
-    const cleanup = () => {
-        inputRef.current.value = "";
-    }
+
+    const cleanup = () => inputRef.current.value = "";
     
     const correctAnswer = () => {
         const record = getRandomPokemon();
-        setPokemon(record);
+        setData(record);
         cleanup();
     }
 
@@ -32,7 +32,7 @@ function WhosThatPokemon() {
 
     const handleKeyDown = (e) => {
         if(e.key === KEY_ENTER) {
-            const id = pokemon.id;
+            const id = data.id;
             const name = String(inputRef.current.value).toLowerCase();
             cheking(id, name);
         }
@@ -47,7 +47,7 @@ function WhosThatPokemon() {
                 onKeyDown={handleKeyDown}
             />
             <div className="py-8 sm:py-0 justify-self-center sm:justify-self-end">
-                {pokemon && <img src={pokemon.sprite} alt="pikachu" className="w-56 sm:w-72"/>}
+                {data && <img src={data.sprite} alt="pikachu" className="w-56 sm:w-72"/>}
             </div>
         </>
     )

@@ -17,9 +17,9 @@ export const useSpecies = ({ data }) => {
 
     const getSprite = (sprites) => sprites?.other['official-artwork'].front_default;
 
-    const sanitizeData = (data, last) => {
-        const size = Math.floor((data?.height / last.height) * 100);
-
+    const sanitizeData = (data, lastHeight) => {
+        const size = Math.floor((data?.height / lastHeight) * 100);
+        
         const height = {
             cm: `${data?.height * 10} cm`,
             m: `${data?.height / 10} M`,
@@ -44,11 +44,24 @@ export const useSpecies = ({ data }) => {
         }
     }
 
+    const reorder = (data, name) => {
+        const currentIndex = data.findIndex(record => record.name == name);
+        const left = data.slice(currentIndex);
+        const right = data.slice(0, currentIndex);
+        return [...left, ...right];
+    }
+
     const sanitizeEvolutions = (data) => {
         if(data) {
-            const evolutionChain = onlyEvolutions(data?.evolution_chain?.evolution?.chain);
-            const [ lastEvolution ] = evolutionChain.slice(-1);
-            return evolutionChain.map(pokemon => sanitizeData(pokemon, lastEvolution))
+            const evolution = onlyEvolutions(data?.evolution_chain?.evolution?.chain);
+            const lastHeight = evolution.slice(-1).at(0)?.height;
+            const reorderedEvolution = reorder(evolution, data.name);
+            
+
+            return {
+                original: evolution.map(record => sanitizeData(record, lastHeight)),
+                reordered: reorderedEvolution.map(record => sanitizeData(record, lastHeight))
+            }
         }
     }
 
@@ -56,6 +69,6 @@ export const useSpecies = ({ data }) => {
     
     return {
         text,
-        evolutions: getEvolutions()
+        evolution: getEvolutions()
     }
 }

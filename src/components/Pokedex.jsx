@@ -1,28 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import { usePokeapi } from "../hooks/usePokeapi";
 import { TextWithRef } from "./Text";
-import { useApiPokemon } from "../hooks/useApiPokemon";
 import Card from "./Card";
-import Pokeball from '../components/Pokeball';
+import Pokeball from "./Pokeball";
 import InfiniteScroll from "./InfiniteScroll";
+import { Loading } from "./Loading";
 
 function Pokedex() {
     const inputRef = useRef(null);
+    
+    const [data, setData] = useState([]);
 
-    const [pokemons, setPokemons] = useState([]);
-
-    const { state, all, filterPokemons, reachedMaximumLength, updateFetch } = useApiPokemon();
+    const { pokemons } = usePokeapi();
+    const { state, all, filterPokemons } = pokemons;
     
     useEffect(() => {
-        const pokemons = all()
-        setPokemons(pokemons);
+        const pokemons = all();
+        setData(pokemons);
     }, [state]);
     
     const handleChange = () => {
         const name = String(inputRef.current.value).toLowerCase();
         const pokemons = filterPokemons(name);
-        setPokemons(pokemons);
+        setData(pokemons);
     }
 
     return (
@@ -34,25 +36,20 @@ function Pokedex() {
                 onChange={handleChange}
             />
             <div className="pt-8">
-                <InfiniteScroll 
-                    intersectionObserverCallback={updateFetch}
-                    reachedMaximumLength={reachedMaximumLength}
-                >
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        {pokemons && pokemons.map((pokemon, index) => (
+                        {data && data.map((record, index) => (
                             <Card key={index}>
-                                <NavLink to={`pokemon/${pokemon.name}`}>
-                                    <img loading="lazy" src={pokemon.sprite} alt={pokemon.name} />
+                                <NavLink to={`pokemon/${record.name}`}>
+                                    <img loading="lazy" src={record.sprite} alt={record.name} />
                                     <div className="grid grid-cols-[1fr_auto] text-primary-300">
-                                        <span className="row-state-1 capitalize font-bold text-xs sm:text-sm text-16">{pokemon.name}</span>
-                                        <span className="row-start-2 text-xs text-16">Nº {pokemon.number}</span>
+                                        <span className="row-state-1 capitalize font-bold text-xs sm:text-sm text-16">{record.name}</span>
+                                        <span className="row-start-2 text-xs text-16">Nº {record.number}</span>
                                         <Pokeball className="row-span-2 w-4 sm:w-8 h-full fill-primary-300"/>
                                     </div>
                                 </NavLink>
                             </Card>
-                        ))}         
+                        ))}
                     </div>
-                </InfiniteScroll>
             </div>
         </>
     )
